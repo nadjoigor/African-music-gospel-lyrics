@@ -21,7 +21,6 @@ class Chant(models.Model):
     theme = models.CharField(max_length=20, choices=THEMES, default='LOUANGE')
     paroles = models.TextField()
     lien = models.URLField(blank=True,null=True)
-    
     def __str__(self):
         return f"{self.titre} {self.artiste} {self.get_langue_display()} "
 
