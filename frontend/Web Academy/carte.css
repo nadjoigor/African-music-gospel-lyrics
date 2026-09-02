@@ -1,0 +1,55 @@
+.range {
+    border: 1px solid gray;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.col {
+    border: 5px solid gray;
+}
+body{
+    background-image: url(./images/closeup-shot-beautiful-young-african-women-with-shopping-bags.jpg);
+    background-repeat: no-repeat;
+    /*background-position: center center;*/
+    background-size:cover;
+}
+
+/*_______________Boutique_________________*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+.carte{
+    border: 1px solid black;
+    border-style: ridge;
+    padding: 10px;
+    text-align: center;
+    box-shadow: red;
+}
+.rupture{
+    color: red;
+}
+.prix {
+    color: blueviolet;
+}
+a:hover{
+    text-decoration:none;
+    color: rgb(192, 12, 12) ;
+}
+h2{
+    color: springgreen;
+}
+body{
+    background-color: rgb(196, 177, 177);
+    line-height: 1.5;
+    font-weight: 900;
+}
+/*______________________________Atelier-2js.html_________________________________________*/
+.ma-div{
+    background-color: red;
+    height: 20px;
+    width: 20px;
+    
+}
+
+

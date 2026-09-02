@@ -3,20 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melody - Accueil</title>
+    <title>Accueil - AGLY</title>
     <style>
-        /* Styles CSS */
+        /* CSS DE BASE */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: #e8e2e2;
+            color: #181818;
             line-height: 1.6;
+            transition: background-color 0.5s, color 0.5s; /* Transition fluide */
+        }
+        
+        /* Styles du mode sombre déclenchés par le JS */
+        body.dark-mode {
+            background-color: #181818;
+            color: #ffffff;
+        }
+        body.dark-mode h1, body.dark-mode p {
+            color: #ffffff;
         }
 
         header {
@@ -24,165 +33,105 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background-color: #181818;
+            background-color: white;
         }
-
+        
         .logo {
             font-size: 24px;
             font-weight: bold;
-            color: #1db954;
+            color: purple;
         }
 
         nav a {
-            color: #b3b3b3;
+            color: purple;
             text-decoration: none;
             margin-left: 20px;
-            transition: color 0.3s;
         }
-
         nav a:hover {
-            color: #ffffff;
+            color: black;
         }
 
-        /* Style spécial pour mettre en valeur les Favoris */
-        nav a.favoris-link {
-            color: #ff416c;
-        }
-        nav a.favoris-link:hover {
-            color: #ff4b2b;
+        /* Style du bouton simple */
+        .btn-mode {
+            background-color: purple;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 20px;
         }
 
         .hero {
             text-align: center;
             padding: 100px 20px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://picsum.photos') no-repeat center center/cover;
         }
 
+        /* Animation CSS basique au survol de l'image */
+        .image img {
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .image img:hover {
+            transform: scale(1.05); /* Grossit juste un peu */
+        }
+        
         .hero h1 {
             font-size: 48px;
+            margin-top: 20px;
             margin-bottom: 20px;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: #b3b3b3;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            background-color: #1db954;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #1ed760;
-        }
-
-        .player-section {
-            max-width: 600px;
-            margin: 50px auto;
-            background: #181818;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .player-section h3 {
-            margin-bottom: 15px;
-        }
-
-        #play-btn {
-            background: #1db954;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #0d0d0d;
-            color: #777;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
 </head>
 <body>
 
     <!-- En-tête -->
     <header>
-        <div class="logo">Melody</div>
+        <div class="logo">AGLY</div>
         <nav>
-            <a href="#">Accueil</a>
-            <a href="#">Titres</a>
-            <a href="#">Artistes</a>
-            <a href="#" class="favoris-link">❤️ Favoris</a>
-            <a href="#">Rechercher</a>
+            <a href="titres.html">Titres</a>
+            <a href="favoris.css">Favoris</a>
+            <a href="profil.html">Profil</a>
+            <a href="recherche.html">Rechercher</a>
+            <!-- Bouton pour le JavaScript -->
+            <button class="btn-mode" id="boutonMode">Mode Sombre</button>
         </nav>
     </header>
 
-    <!-- Section principale (Hero) -->
-    <section class="hero">
-        <h1>Vibrez au rythme de la musique</h1>
-        <p>Découvrez, écoutez et partagez vos chansons préférées en illimité.</p>
-        <button class="btn" id="discover-btn">Explorer les nouveautés</button>
-    </section>
+    <!-- Zone Héros -->
+    <div class="hero">
+        <div class="image">
+            <img src="images/image.png" alt="photo de profil" width="400px" height="400px">
+        </div>
+        <section>
+            <h1>Vibrez au rythme de la musique</h1>
+            <p>Découvrez, écoutez et partagez vos chansons gospels préférées en illimité.</p>
+        </section>
+    </div>
 
-    <!-- Section Lecteur Audio Interactif -->
-    <section class="player-section">
-        <h3>Titre du moment : "Songe d'été"</h3>
-        <p id="track-status" style="margin-bottom: 15px; color: #b3b3b3;">En pause</p>
-        <button id="play-btn">Lecture</button>
-    </section>
-
-    <!-- Pied de page -->
-    <footer>
-        <p>&copy; 2026 Melody. Tous droits réservés.</p>
-    </footer>
-
-    <!-- Script JavaScript -->
+    <!-- JAVASCRIPT DE BASE -->
     <script>
-        const playBtn = document.getElementById('play-btn');
-        const trackStatus = document.getElementById('track-status');
-        const discoverBtn = document.getElementById('discover-btn');
-        const favorisLink = document.querySelector('.favoris-link');
+        // On sélectionne le bouton et le corps (body) de la page
+        const bouton = document.getElementById('boutonMode');
+        const corpsPage = document.body;
 
-        let isPlaying = false;
-
-        // Gestion du bouton lecture/pause
-        playBtn.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            if (isPlaying) {
-                trackStatus.textContent = 'Lecture en cours... 🎶';
-                playBtn.textContent = 'Pause';
+        // Quand on clique sur le bouton
+        bouton.addEventListener('click', function() {
+            // On ajoute ou on enlève la classe 'dark-mode' au body
+            corpsPage.classList.toggle('dark-mode');
+            
+            // On change le texte du bouton selon la situation
+            if (corpsPage.classList.contains('dark-mode')) {
+                bouton.textContent = "Mode Clair";
             } else {
-                trackStatus.textContent = 'En pause';
-                playBtn.textContent = 'Lecture';
+                bouton.textContent = "Mode Sombre";
             }
         });
-
-        // Alerte interactive sur le bouton principal
-        discoverBtn.addEventListener('click', () => {
-            alert('Bienvenue ! Les dernières nouveautés arrivent bientôt.');
-        });
-
-        // Alerte interactive sur l'onglet Favoris (pour simulation)
-        favorisLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Vous devez créer une playlist pour voir vos Favoris.');
-        });
     </script>
-
 </body>
 </html>
+
+
+
