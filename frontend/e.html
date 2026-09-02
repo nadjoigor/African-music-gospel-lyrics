@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - AGLY</title>
+    <style>
+        /* CSS DE BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #e8e2e2;
+            color: #181818;
+            line-height: 1.6;
+            transition: background-color 0.5s, color 0.5s; /* Transition fluide */
+        }
+        
+        /* Styles du mode sombre déclenchés par le JS */
+        body.dark-mode {
+            background-color: #181818;
+            color: #ffffff;
+        }
+        body.dark-mode h1, body.dark-mode p {
+            color: #ffffff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: purple;
+        }
+
+        nav a {
+            color: purple;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+        nav a:hover {
+            color: black;
+        }
+
+        /* Style du bouton simple */
+        .btn-mode {
+            background-color: purple;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        /* Animation CSS basique au survol de l'image */
+        .image img {
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        .image img:hover {
+            transform: scale(1.05); /* Grossit juste un peu */
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- En-tête -->
+    <header>
+        <div class="logo">AGLY</div>
+        <nav>
+            <a href="titres.html">Titres</a>
+            <a href="favoris.css">Favoris</a>
+            <a href="profil.html">Profil</a>
+            <a href="recherche.html">Rechercher</a>
+            <!-- Bouton pour le JavaScript -->
+            <button class="btn-mode" id="boutonMode">Mode Sombre</button>
+        </nav>
+    </header>
+
+    <!-- Zone Héros -->
+    <div class="hero">
+        <div class="image">
+            <img src="images/image.png" alt="photo de profil" width="400px" height="400px">
+        </div>
+        <section>
+            <h1>Vibrez au rythme de la musique</h1>
+            <p>Découvrez, écoutez et partagez vos chansons gospels préférées en illimité.</p>
+        </section>
+    </div>
+
+    <!-- JAVASCRIPT DE BASE -->
+    <script>
+        // On sélectionne le bouton et le corps (body) de la page
+        const bouton = document.getElementById('boutonMode');
+        const corpsPage = document.body;
+
+        // Quand on clique sur le bouton
+        bouton.addEventListener('click', function() {
+            // On ajoute ou on enlève la classe 'dark-mode' au body
+            corpsPage.classList.toggle('dark-mode');
+            
+            // On change le texte du bouton selon la situation
+            if (corpsPage.classList.contains('dark-mode')) {
+                bouton.textContent = "Mode Clair";
+            } else {
+                bouton.textContent = "Mode Sombre";
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
