@@ -1,0 +1,10 @@
+p{
+    width: 200px;
+    text-align: justify;
+    border: 5px solid black;
+    text-transform: capitalize ;
+    line-height: 2.3;
+    font-weight: bold;
+    font-style: oblique;
+    font-variant: small-caps;
+}

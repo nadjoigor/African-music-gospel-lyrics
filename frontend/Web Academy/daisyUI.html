@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css" rel="stylesheet" type="text/css" />
+
+    <title>Utilisation de daisy html</title>
+    <style>
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        p{
+            color: blue;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Formulaire d'inscription</h1>
+    <form action="" method="post">
+    <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+    <legend class="fieldset-legend">Login</legend>
+
+    <label class="label">Username</label>
+    <input type="text" class="input" id="username" placeholder="Username" />
+    <p id="username_error"></p>
+
+
+    <label class="label">Email</label>
+    <input type="email" class="input" id="email" placeholder="Email" />
+    <p id="email_error"></p>
+
+    <label class="label">Password</label>
+    <input type="password" class="input" id="password" placeholder="Password" />
+    <p id="password_error"></p>
+
+
+    <label class="label">Password</label>
+    <input type="password" class="input" id="password_2" placeholder="Password" />
+    <p id="password_error_2"></p>    
+
+    <label class="label">Âge</label>
+    <input type="number" class="input" id="age" placeholder="Âge" />
+    <p id="majeure"></p>    
+
+    <button class="btn btn-neutral mt-4" type="submit">Login</button>
+    </fieldset>
+    </form>
+    <script>
+        //accès aux éléments
+        const username_input=document.querySelector('#username')
+        const email_input=document.querySelector('#email')
+        const password_input=document.querySelector('#password')
+        const password_input_2=document.querySelector('#password_2')
+        const age=document.querySelector('#age')
+
+        const username_error=document.querySelector('#username_error')
+        const email_error=document.querySelector('#email_error')
+        const password_error=document.querySelector('#password_error')
+        const password_error_2=document.querySelector('#password_error_2')
+        const majeure=document.querySelector('#majeure')    
+        const formulaire = document.querySelector("form")
+        //Première vérification
+        function verification_username(){
+            const username= username_input.value
+            if(!username.trim()){
+                const message = "Veuillez renseigner un pseudo valide"
+                username_error.textContent= message
+            }
+            if(username.trim().length < 3){
+                username_error.textContent="Veuillez renseigner un pseudo valide"
+            }
+        }
+        function verification_email(){
+            const email = email_input.value
+            if(!email.trim()){
+                const message = "Veuillez renseigner un email valide"
+                email_error.textContent=message
+            }
+            
+            
+        }
+        function reinitialistion(){
+            username_input.value=""
+            email_error.value=""
+            password_error.value=""
+            age.value=""
+        }
+        function verification_password(){
+            const password_1 = password_input.value
+            const password_2 = password_input_2.value
+            if(password_1.trim().length<8){
+                password_error.textContent="Veuillez entrer au moins 8 caractères"
+            }
+            if(password_1!==password_2){
+                password_error_2.textContent="Les mots ne passes ne sont pas identiques"
+            }
+            if(password_1==password_2){
+                password_error_2.textContent="Les mots de passes sont équivalents"
+                password_error_2.style.color = "green"
+            }
+        }
+        function verification_majeure(){
+            const valeur=document.querySelector('#age')
+            const a =valeur.value
+            if(Number(a)<0){
+                majeure.textContent="Entrer une donnée valide"
+            }
+            if(0<= Number(a) && Number(a)<18){
+                majeure.textContent="Mineur(e)"
+            }
+            else{
+                majeure.textContent="Majeur(e)"
+            }
+        }
+        
+        
+        formulaire.addEventListener('submit', function(event){
+            event.preventDefault()
+            reinitialistion()
+            verification_username()
+            verification_email()
+            verification_password()
+            verification_majeure()
+        })
+    </script>
+</body>
+</html>

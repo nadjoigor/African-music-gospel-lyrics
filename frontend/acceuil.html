@@ -4,19 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceuil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            line-height: 1.6;
+            background-image: url('./images/cc.avif');
+            width: 100%;
+            background-size: cover
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: #181818;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF6115;
+        }
+        nav a {
+            color: #b3b3b3;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.5s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #181818;
+        }
+        p {
+            color: #181818;
+        }
+
+    </style>
 </head>
 <body>
     <!-- En-tête -->
     <header>
         <div class="logo">AGLY</div>
         <nav>
-            <a href="acceuil.html">Accueil</a>
             <a href="titres.html">Titres</a>
-            <a href="favoris.html">Favoris</a>
+            <a href="favoris.css">Favoris</a>
             <a href="profil.html">Profil</a>
             <a href="recherche.html">Rechercher</a>
         </nav>
     </header>
+    <div class="hero">
+        <section>
+            <h1>Vibrez au rythme de la musique</h1>
+            <p>Découvrez, écoutez et partagez vos chansons gospels préférées en illimité.</p>
+        </section>
+    </div>
+    
 
 </body>
 </html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire et Validation</title>
+</head>
+<body>
+    <h1>Formulaire <br> d'inscripton</h1>
+    <form action="boutique.html" method="post">
+        <label for="nom">Nom et Prénoms</label><br>
+        <input type="text" required>
+        <br>
+        <label for="email">Email</label><br>
+        <input type="email">
+        <br>
+        <label for="date de naissance">Date de naissance</label><br>
+        <input type="date">
+        <br>
+        <label for="ville">Lieu de naissance</label><br>
+        <select name="ville" id="ville">
+            <option value="">Choisissez votre ville</option>
+            <option value="Cotonou">Cotonou</option>
+            <option value="Parakou">Parakou</option>
+            <option value="Natitingou">Natitingou</option>
+        </select>
+        <br>
+        <input type="radio" name="genre" id="h" value="H" >
+        <label for="H">Homme</label>
+        <input type="radio" name="genre" id="h">
+        <label for="F">Femme</label>
+        <br>
+        <label for="mot de passe">Mot de passe</label><br>
+        <input type="password" placeholder="Mot de passe">
+        <br>
+
+        <input type="submit" value="Inscription">
+        <br>
+        <textarea name="message" id="mess">message</textarea>
+    </form>
+</body>
+</html>
