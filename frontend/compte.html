@@ -57,9 +57,63 @@
             width: 100%;
             padding: 12px 15px;
             border: 2px solid  #e8e2e2;
-            
+            font-size: 14px;
+            outline: none;
         }
-
+        input:focus {
+            border-color: purple;
+            box-shadow: 0 0 8px rgba(128, 0, 128, 0.1);
+        }
+        button{
+            width: 100%;
+            color: white;
+            background-color: purple;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #800080;
+            transform: scale(1.02);
+        }
+        .button-link {
+            background: none;
+            border: none;
+            color: rgb(118, 109, 118);
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            margin-left: 5px;
+            padding: 0;
+        }
+        .button-link:hover {
+            color: black;
+            text-decoration: underline;
+        }
+        footer {
+            color: #800080;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .buttonconnexion{
+            background-color: transparent;
+            color:black;
+            text-decoration: underline;
+            font-weight: 100;
+        }
+        .conteneur{
+            /*border:2px solid black;*/
+            margin-top: 9px;
+            padding-left: 15px;
+            display: flex;
+            flex-direction: row;
+            gap: 3px;
+        }
     </style>
 </head>
 <body>
@@ -82,9 +136,12 @@
                 <label for="Mot de passe">Mot de passe</label>
                 <input type="Mot de passe" id="Mot de passe" placeholder="Créez un mot de passe " required>
             </div><br>
-            <button type="submit">Créer mon compte</button>
-            
-            <p>Déjà un compte ? <button type="submit">Se connecter</button></p>
+            <div class="button-link">
+                <button type="submit">Créer mon compte</button>
+            </div>
+            <div class="conteneur">
+                <p>Déjà un compte ?</p> <button class="buttonconnexion" type="submit">Se connecter</button>
+            </div>
         </form> 
         <!--Pied de page-->
             <footer>

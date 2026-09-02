@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer un compte - AGLY</title>
+    <title>Titres - AMGL</title>
     <style>
-        /* 1. RÈGLES DE BASE (Mêmes polices et fond que l'accueil) */
         * {
             margin: 0;
             padding: 0;
@@ -13,164 +12,181 @@
             font-family: Arial, sans-serif;
         }
         body {
-            background-color: #e8e2e2; /* Fond gris clair identique */
+            background-color: #e8e2e2;
             color: #181818;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo { font-size: 24px; font-weight: bold; color: purple; letter-spacing: 2px; }
+        nav a { color: purple; text-decoration: none; margin-left: 20px; }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: purple;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Liste des chants */
+        .songs-list {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            padding: 20px;
+            gap: 15px;
         }
 
-        /* 2. EN-TÊTE */
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        header h1 {
-            font-size: 42px;
-            font-weight: bold;
-            color: purple; /* Violet de votre marque */
-            letter-spacing: 2px;
-        }
-        header p {
-            color: #555555;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-
-        /* 3. LE FORMULAIRE (Effet boîte blanche flottante) */
-        form {
+        /* Ligne d'un chant (Le modèle pour Django) */
+        .song-item {
             background-color: white;
-            padding: 40px;
-            border-radius: 20px; /* Coins arrondis comme votre image */
-            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08); /* Ombre douce */
-            width: 100%;
-            max-width: 400px; /* Largeur maximale de la boîte */
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .song-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(128, 0, 128, 0.1);
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        /* Infos du chant */
+        .song-details {
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
+        .song-icon {
+            font-size: 28px;
+        }
+        .song-title {
+            font-size: 18px;
+            font-weight: bold;
             color: #181818;
+            margin-bottom: 4px;
+        }
+        .song-artist {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        /* Badges pour les thèmes et langues (Champs 'theme' et 'langue' de Django) */
+        .badges {
+            display: flex;
+            gap: 8px;
+        }
+        .badge {
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
             font-weight: bold;
-            font-size: 14px;
         }
-
-        /* Styles des champs de saisie */
-        input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e8e2e2;
-            border-radius: 8px;
-            font-size: 14px;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
-        /* Effet visuel quand on clique dans un champ */
-        input:focus {
-            border-color: purple;
-            box-shadow: 0 0 8px rgba(128, 0, 128, 0.1);
-        }
-
-        /* 4. LES BOUTONS ANIMÉS */
-        button[type="submit"] {
-            width: 100%;
-            background-color: purple;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.3s;
-            margin-top: 10px;
-        }
-        /* Effet de survol sur le bouton principal */
-        button[type="submit"]:hover {
-            background-color: #800080;
-            transform: scale(1.02);
-        }
-
-        /* Zone de bascule en bas de formulaire */
-        .switch-account {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 14px;
-            color: #555555;
-        }
-        /* Bouton "Se connecter" transformé en lien discret */
-        .btn-link {
-            background: none;
-            border: none;
+        .badge-theme {
+            background-color: rgba(128, 0, 128, 0.1);
             color: purple;
-            font-weight: bold;
-            cursor: pointer;
+        }
+        .badge-langue {
+            background-color: #eee;
+            color: #333;
+        }
+
+        /* Groupe de boutons d'action (Champs 'paroles' et 'lien' de Django) */
+        .song-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 20px;
             text-decoration: none;
             font-size: 14px;
-            transition: color 0.3s;
-            margin-left: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
         }
-        .btn-link:hover {
-            color: black;
-            text-decoration: underline;
+        .btn-paroles {
+            background-color: purple;
+            color: white;
         }
-
-        /* 5. PIED DE PAGE */
-        footer {
-            color: #800080;
-            font-size: 12px;
-            text-align: center;
-            margin-top: 40px;
+        .btn-paroles:hover { background-color: #5a005a; }
+        
+        .btn-video {
+            background-color: #ff0000;
+            color: white;
         }
+        .btn-video:hover { background-color: #cc0000; }
     </style>
 </head>
 <body>
 
-    <!-- En-tête -->
     <header>
-        <h1>AGLY</h1>
-        <p><strong>African Music Gospel Lyrics</strong></p>
+        <div class="logo-container"><div class="logo">AGLY</div></div>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="titres.html">Titres</a>
+        </nav>
     </header>
 
-    <!-- Formulaire lié à index.html (votre page d'accueil) -->
-    <form action="index.html">
-        <div class="form-group">
-            <label for="Nom">Nom d'utilisateur</label>
-            <input type="text" id="Nom" placeholder="Choisissez un nom d'utilisateur" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="email">Adresse Email</label>
-            <input type="email" id="email" placeholder="Ex: votremail@gmail.com" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="Mot-de-passe">Mot de passe</label>
-            <!-- Corrigé le type en "password" pour masquer les caractères à l'écran -->
-            <input type="password" id="Mot-de-passe" placeholder="Créez un mot de passe" required>
-        </div>
-        
-        <!-- Ce bouton valide les champs et envoie vers index.html grâce à l'action du formulaire -->
-        <button type="submit">Créer mon compte</button>
-        
-        <div class="switch-account">
-            Déjà un compte ? 
-            <!-- Ce bouton redirige directement vers l'accueil sans forcer le remplissage des champs -->
-            <button type="button" class="btn-link" onclick="window.location.href='index.html'">Se connecter</button>
-        </div>
-    </form> 
+    <div class="container">
+        <h1>Tous les Chants Gospel</h1>
 
-    <!-- Pied de page -->
-    <footer>
-        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
-    </footer>
+        <div class="songs-list">
+            
+            <!-- Exemple 1 : Correspond au modèle avec un lien vidéo -->
+            <div class="song-item">
+                <div class="song-details">
+                    <div class="song-icon">🎵</div>
+                    <div class="song-info">
+                        <div class="song-title">Way Maker</div>
+                        <div class="song-artist">Sinach</div>
+                        <div class="badges">
+                            <span class="badge badge-theme">Adoration</span>
+                            <span class="badge badge-langue">Anglais (eng)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-actions">
+                    <!-- Ce bouton servira à ouvrir une page ou un popup avec le champ 'paroles' -->
+                    <a href="#" class="btn btn-paroles">Voir Paroles</a>
+                    <!-- Ce bouton utilise le champ 'lien' (Ex: YouTube) -->
+                    <a href="https://youtube.com..." target="_blank" class="btn btn-video">Vidéo</a>
+                </div>
+            </div>
+
+            <!-- Exemple 2 : Correspond au modèle SANS lien vidéo (Le bouton vidéo disparaît) -->
+            <div class="song-item">
+                <div class="song-details">
+                    <div class="song-icon">🎵</div>
+                    <div class="song-info">
+                        <div class="song-title">Je loue ton saint nom</div>
+                        <div class="song-artist">Chorale AMGL</div>
+                        <div class="badges">
+                            <span class="badge badge-theme">Louange</span>
+                            <span class="badge badge-langue">Français (fra)</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-actions">
+                    <a href="#" class="btn btn-paroles">Voir Paroles</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </body>
 </html>
