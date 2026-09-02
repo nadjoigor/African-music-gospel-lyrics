@@ -7,21 +7,32 @@
     <link rel="stylesheet" href="favoris.css">
 </head>
 <body>
-    <header></header>
+        <!-- En-tête -->
+        <header>
+                <div class="logo">AGLY</div>
+                <nav>
+                    <div class="lien"><a href="acceuil.html">Accueil</a></div>
+                    <div class="lien"><a href="titres.html">Titres</a></div>
+                    <div class="lien"><a href="favoris.html">Favoris</a></div>
+                    <div class="lien"><a href="profil.html">Profil</a></div>
+                    <div class="lien"><a href="recherche.html">Rechercher</a></div>
+                </nav>
+        </header>
+    
     <main>
         <section id="favoritsPage" class="favpage">
             
-            <h2>Mes chansons favorites 💗</h2>
-            <label for="favoris"></label>
-            <input placeholder="+ Ajouter un favoris" name="favoris" type="search">
+            <h1>Mes chansons favorites 💖</h1>
+            <button id="ajouter"> + Ajouter un favoris</button>
             <div id="favList" class="fav">
                 <!--Les favoris vont s'aficher ici-->
             </div>
-            <p>Tu n'as pas encore de favorits? Clique sur 💗 pour en enregistrer</p>
+            <p class="comment">Tu n'as pas encore de favorits? Clique sur 💖 pour en enregistrer</p>
 
             <button id="retour">← Retour</button>
             
         </section>
     </main>
+    <script src="favoris.js"></script>
 </body>
 </html>

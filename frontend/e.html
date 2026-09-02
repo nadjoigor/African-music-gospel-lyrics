@@ -3,118 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Melody - Accueil</title>
+    <title>Créer un compte - AGLY</title>
     <style>
-        /* Styles CSS */
+        /* 1. RÈGLES DE BASE (Mêmes polices et fond que l'accueil) */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
         }
-
         body {
-            background-color: #121212;
-            color: #ffffff;
-            line-height: 1.6;
-        }
-
-        header {
+            background-color: #e8e2e2; /* Fond gris clair identique */
+            color: #181818;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 20px 50px;
-            background-color: #181818;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1db954;
-        }
-
-        nav a {
-            color: #b3b3b3;
-            text-decoration: none;
-            margin-left: 20px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffffff;
-        }
-
-        /* Style spécial pour mettre en valeur les Favoris */
-        nav a.favoris-link {
-            color: #ff416c;
-        }
-        nav a.favoris-link:hover {
-            color: #ff4b2b;
-        }
-
-        .hero {
+        /* 2. EN-TÊTE */
+        header {
             text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://picsum.photos') no-repeat center center/cover;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 42px;
+            font-weight: bold;
+            color: purple; /* Violet de votre marque */
+            letter-spacing: 2px;
+        }
+        header p {
+            color: #555555;
+            font-size: 14px;
+            margin-top: 5px;
         }
 
-        .hero h1 {
-            font-size: 48px;
+        /* 3. LE FORMULAIRE (Effet boîte blanche flottante) */
+        form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px; /* Coins arrondis comme votre image */
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.08); /* Ombre douce */
+            width: 100%;
+            max-width: 400px; /* Largeur maximale de la boîte */
+        }
+
+        .form-group {
             margin-bottom: 20px;
         }
 
-        .hero p {
-            font-size: 18px;
-            color: #b3b3b3;
-            margin-bottom: 30px;
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #181818;
+            font-weight: bold;
+            font-size: 14px;
         }
 
-        .btn {
-            background-color: #1db954;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #1ed760;
-        }
-
-        .player-section {
-            max-width: 600px;
-            margin: 50px auto;
-            background: #181818;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-
-        .player-section h3 {
-            margin-bottom: 15px;
-        }
-
-        #play-btn {
-            background: #1db954;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #0d0d0d;
-            color: #777;
-            position: relative;
-            bottom: 0;
+        /* Styles des champs de saisie */
+        input {
             width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e8e2e2;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        /* Effet visuel quand on clique dans un champ */
+        input:focus {
+            border-color: purple;
+            box-shadow: 0 0 8px rgba(128, 0, 128, 0.1);
+        }
+
+        /* 4. LES BOUTONS ANIMÉS */
+        button[type="submit"] {
+            width: 100%;
+            background-color: purple;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.3s;
+            margin-top: 10px;
+        }
+        /* Effet de survol sur le bouton principal */
+        button[type="submit"]:hover {
+            background-color: #800080;
+            transform: scale(1.02);
+        }
+
+        /* Zone de bascule en bas de formulaire */
+        .switch-account {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #555555;
+        }
+        /* Bouton "Se connecter" transformé en lien discret */
+        .btn-link {
+            background: none;
+            border: none;
+            color: purple;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            margin-left: 5px;
+        }
+        .btn-link:hover {
+            color: black;
+            text-decoration: underline;
+        }
+
+        /* 5. PIED DE PAGE */
+        footer {
+            color: #800080;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 40px;
         }
     </style>
 </head>
@@ -122,67 +135,42 @@
 
     <!-- En-tête -->
     <header>
-        <div class="logo">Melody</div>
-        <nav>
-            <a href="#">Accueil</a>
-            <a href="#">Titres</a>
-            <a href="#">Artistes</a>
-            <a href="#" class="favoris-link">❤️ Favoris</a>
-            <a href="#">Rechercher</a>
-        </nav>
+        <h1>AGLY</h1>
+        <p><strong>African Music Gospel Lyrics</strong></p>
     </header>
 
-    <!-- Section principale (Hero) -->
-    <section class="hero">
-        <h1>Vibrez au rythme de la musique</h1>
-        <p>Découvrez, écoutez et partagez vos chansons préférées en illimité.</p>
-        <button class="btn" id="discover-btn">Explorer les nouveautés</button>
-    </section>
-
-    <!-- Section Lecteur Audio Interactif -->
-    <section class="player-section">
-        <h3>Titre du moment : "Songe d'été"</h3>
-        <p id="track-status" style="margin-bottom: 15px; color: #b3b3b3;">En pause</p>
-        <button id="play-btn">Lecture</button>
-    </section>
+    <!-- Formulaire lié à index.html (votre page d'accueil) -->
+    <form action="index.html">
+        <div class="form-group">
+            <label for="Nom">Nom d'utilisateur</label>
+            <input type="text" id="Nom" placeholder="Choisissez un nom d'utilisateur" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Adresse Email</label>
+            <input type="email" id="email" placeholder="Ex: votremail@gmail.com" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="Mot-de-passe">Mot de passe</label>
+            <!-- Corrigé le type en "password" pour masquer les caractères à l'écran -->
+            <input type="password" id="Mot-de-passe" placeholder="Créez un mot de passe" required>
+        </div>
+        
+        <!-- Ce bouton valide les champs et envoie vers index.html grâce à l'action du formulaire -->
+        <button type="submit">Créer mon compte</button>
+        
+        <div class="switch-account">
+            Déjà un compte ? 
+            <!-- Ce bouton redirige directement vers l'accueil sans forcer le remplissage des champs -->
+            <button type="button" class="btn-link" onclick="window.location.href='index.html'">Se connecter</button>
+        </div>
+    </form> 
 
     <!-- Pied de page -->
     <footer>
-        <p>&copy; 2026 Melody. Tous droits réservés.</p>
+        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
     </footer>
-
-    <!-- Script JavaScript -->
-    <script>
-        const playBtn = document.getElementById('play-btn');
-        const trackStatus = document.getElementById('track-status');
-        const discoverBtn = document.getElementById('discover-btn');
-        const favorisLink = document.querySelector('.favoris-link');
-
-        let isPlaying = false;
-
-        // Gestion du bouton lecture/pause
-        playBtn.addEventListener('click', () => {
-            isPlaying = !isPlaying;
-            if (isPlaying) {
-                trackStatus.textContent = 'Lecture en cours... 🎶';
-                playBtn.textContent = 'Pause';
-            } else {
-                trackStatus.textContent = 'En pause';
-                playBtn.textContent = 'Lecture';
-            }
-        });
-
-        // Alerte interactive sur le bouton principal
-        discoverBtn.addEventListener('click', () => {
-            alert('Bienvenue ! Les dernières nouveautés arrivent bientôt.');
-        });
-
-        // Alerte interactive sur l'onglet Favoris (pour simulation)
-        favorisLink.addEventListener('click', (e) => {
-            e.preventDefault();
-            alert('Vous devez créer une playlist pour voir vos Favoris.');
-        });
-    </script>
 
 </body>
 </html>
