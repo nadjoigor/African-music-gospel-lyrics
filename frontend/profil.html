@@ -5,12 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+         @media (max-width: 1200px) {
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    }
+            overflow: auto; 
+        }
+        }
+        body {
+            background-color: #e8e2e2;
+            color: #000000;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; 
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: purple;
+            letter-spacing: 2px;
+            animation: pulseLogo 5s infinite ease-in-out;
+            display:inline-block;
+        }
+        .w3-spin {
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1; 
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #800080; }
+        }
+        nav a {
+            color: purple;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.5s;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        nav a:hover {
+            color:black ;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: purple;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
 
     .Info {
         max-width: 600px;
@@ -19,6 +93,7 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(12, 11, 11, 0.1);
+        margin-top: 10px;
     }
     .Info2{
         max-width: 600px;
@@ -98,11 +173,10 @@
     <header>
         <div class="logo">AGLY</div>
                 <nav>
-                    <div class="lien"><a href="acceuil.html">Accueil</a></div>
-                    <div class="lien"><a href="titres.html">Titres</a></div>
-                    <div class="lien"><a href="favoris.html">Favoris</a></div>
-                    <div class="lien"><a href="profil.html">Profil</a></div>
-                    <div class="lien"><a href="recherche.html">Rechercher</a></div>
+                    <a href="acceuil.html">Acceuil</a>
+                    <a href="lyrics.html">Lyrics</a>
+                    <a href="a propos.html">A propros</a>
+                    <a href="profil.html">Profil</a>
                 </nav>
     </header>
     <div class="Info">

@@ -17,6 +17,11 @@
             line-height: 1.6;
             overflow: hidden;
         }
+        @media (max-width: 1200px) {
+        body {
+            overflow: auto; 
+        }
+        }
         header {
             display: flex;
             justify-content: space-between;
@@ -25,12 +30,25 @@
             background-color: white;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
         }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; 
+        }
         .logo {
             font-size: 24px;
             font-weight: bold;
             color: purple;
             letter-spacing: 2px;
             animation: pulseLogo 5s infinite ease-in-out;
+            display:inline-block;
+        }
+        .w3-spin {
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1; 
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
         }
         @keyframes pulseLogo {
             0%, 100% { transform: scale(1); }
@@ -97,8 +115,23 @@
             margin-bottom: 20px;
             color: #181818;
         }
-        p {
+        h1:hover{transform: scale(1.05);
+        color: #800080;
+        }
+        p{
+            color: #555555;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+
+        
+        }
+        .hero p:hover {
             color: #181818;
+            letter-spacing: 0.5px;
+        }
+        footer{
+            color: #800080;
         }
 
     </style>
@@ -106,12 +139,16 @@
 <body>
     <!-- En-tête -->
     <header>
-        <div class="logo">AGLY</div>
+        <div class="logo-container">
+            <div class="logo">AGLY</div>
+            <div class="w3-spin">💿</div>
+        </div>
+
         <nav>
-            <a href="titres.html">Titres</a>
-            <a href="favoris.html">Favoris</a>
+            <a href="acceuil.html">Acceuil</a>
+            <a href="lyrics.html">Lyrics</a>
+            <a href="a propos.html">A propros</a>
             <a href="profil.html">Profil</a>
-            <a href="recherche.html">Rechercher</a>
         </nav>
     </header>
     <div class="hero">
@@ -120,8 +157,11 @@
             <h1>Vibrez au rythme de la musique</h1>
             <p>Découvrez, écoutez et partagez vos chansons gospels préférées en illimité.</p>
         </section>
+        <!--Pied de page-->
+            <footer>
+        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
+    </footer>
     </div>
     
-
 </body>
 </html>
