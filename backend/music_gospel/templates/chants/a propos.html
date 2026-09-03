@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A propros</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; 
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: purple;
+            letter-spacing: 2px;
+            animation: pulseLogo 5s infinite ease-in-out;
+            display:inline-block;
+        }
+        .w3-spin {
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1; 
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #800080; }
+        }
+        nav a {
+            color: purple;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.5s;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        nav a:hover {
+            color:black ;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: purple;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        body{
+            color: #f8fafc;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .cont{
+            background-color: #886786;;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+        main{
+            flex: 1;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1{
+            font-size: 35px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: white;
+        }
+        
+        p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #e5e5e5;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-item {
+            background-color: #3a0837;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .feature-item h3 {
+            color: rgb(101, 146, 101);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .feature-item li{
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 10px;
+            color: #b3b3b3;
+        }
+        footer{
+            color: #800080;
+            text-align: center;
+            padding: 10px;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">AGLY</div>
+            <div class="w3-spin">💿</div>
+        </div>
+        <nav>
+            <a href="acceuil.html">Acceuil</a>
+            <a href="lyrics.html">Lyrics</a>
+            <a href="a propos.html">A propros</a>
+            <a href="profil.html">Profil</a>
+        </nav>
+    </header>
+    <main>
+        <div class="cont">
+            <h1>À propos de nous</h1>
+                
+            <h3>🎯 Notre Mission</h3>
+            <p>
+                <strong>African Music Gospel Lyrics</strong> est une plateforme dédiée à la valorisation du Gospel Africain. 
+                     Notre objectif est de permettre à chaque chrétien de retrouver facilement les paroles de ses chants préférés, 
+                    en Français, Anglais, Yoruba, Fon et autres langues africaines.
+            </p>
+            
+            <p>Que vous cherchiez à comprendre le sens caché d'un couplet,
+                 à mémoriser un refrain ou simplement à chanter en chœur,
+                  AGLY vous accompagne en s'adaptant à tous vos écrans grâce 
+                  à une interface pensée pour le confort visuel.
+            </p>
+            <div class="features-grid">
+                <div class="feature-item">
+                     <h3>✨ Fonctionnalités</h3>
+                        <ul>
+                        <li>
+                            <b>Recherche Avancée</b> : Trouvez un chant par Artiste, Titre, Langue ou Thème : Louange, Adoration, Grâce...
+                        </li>
+                        <li>
+                            <b>Chants Préférés</b> : Créez votre bibliothèque personnelle de chants pour les cultes et répétitions.
+                        </li>
+                        <li>
+                            <b>Accès Sécurisé</b> : Chaque utilisateur a soncompte pour sauvegarder ses favoris.
+                        </li>
+                         <li>
+                            <b>Interface Simple</b> : Conçu pour être utilisé sur PC et Mobile pendant les cultes.
+                        </li>
+                    </ul>
+                    
+                </div>
+                <div class="feature-item">
+                    <h3>🙏 Pourquoi ce projet ?</h3>
+                    <p style="font-size: 16px; color: #b3b3b3;">
+                    Combien de fois avons-nous cherché les paroles d'un chant pendant la louange ? 
+                        Ce projet est né du besoin de centraliser le riche patrimoine musical Gospel Africain 
+                        et de le rendre accessible à tous, partout.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎵 Réalisé par:</h3>
+                    <ul>
+                        <li>
+                            <b>EQUIPE WEBACADEMY:</b> SuperSaiyan
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <a href="acceuil.html">Retour </a>
+    </main>
+    <footer>
+        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
+    </footer>
+</body>
+</html>
