@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Titres - AMGL</title>
+    <title>Titres</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,8 @@
         }
         body {
             background-color: #e8e2e2;
-            color: #181818;
+            color: #333333; /* Changé en sombre pour la lisibilité sur fond clair */
+            line-height: 1.6;
         }
         header {
             display: flex;
@@ -23,168 +24,155 @@
             background-color: white;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
         }
-        .logo-container { display: flex; align-items: center; gap: 12px; }
-        .logo { font-size: 24px; font-weight: bold; color: purple; letter-spacing: 2px; }
-        nav a { color: purple; text-decoration: none; margin-left: 20px; }
-
-        /* Conteneur principal */
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        h1 {
-            color: purple;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        /* Liste des chants */
-        .songs-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        /* Ligne d'un chant (Le modèle pour Django) */
-        .song-item {
-            background-color: white;
-            padding: 20px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .song-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(128, 0, 128, 0.1);
-        }
-
-        /* Infos du chant */
-        .song-details {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .song-icon {
-            font-size: 28px;
-        }
-        .song-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #181818;
-            margin-bottom: 4px;
-        }
-        .song-artist {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 8px;
-        }
-
-        /* Badges pour les thèmes et langues (Champs 'theme' et 'langue' de Django) */
-        .badges {
-            display: flex;
-            gap: 8px;
-        }
-        .badge {
-            font-size: 11px;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: bold;
-        }
-        .badge-theme {
-            background-color: rgba(128, 0, 128, 0.1);
-            color: purple;
-        }
-        .badge-langue {
-            background-color: #eee;
-            color: #333;
-        }
-
-        /* Groupe de boutons d'action (Champs 'paroles' et 'lien' de Django) */
-        .song-actions {
+        .logo-container {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        .btn {
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 14px;
+        .logo {
+            font-size: 24px;
             font-weight: bold;
-            transition: background 0.3s;
+            color: purple;
+            letter-spacing: 2px;
+            animation: pulseLogo 5s infinite ease-in-out;
+            display:inline-block;
         }
-        .btn-paroles {
+        .w3-spin {
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1;
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #800080; }
+        }
+        nav a {
+            color: purple;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.5s;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        nav a:hover {
+            color:black ;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: purple;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        /* --- NOUVEAU STYLE RECHERCHE ET FILTRES --- */
+        .search-filter-container {
+            max-width: 600px;
+            margin: 40px auto; /* Centre le bloc horizontalement et l'espace du header */
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 16px;
+            border: 2px solid rgba(128, 0, 128, 0.2);
+            border-radius: 30px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-box:focus {
+            border-color: purple;
+            box-shadow: 0 4px 15px rgba(128, 0, 128, 0.15);
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap; /* Aligne proprement sur mobile */
+        }
+
+        .filter-select {
+            padding: 10px 20px;
+            font-size: 14px;
+            color: purple;
+            background-color: white;
+            border: 2px solid purple;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            outline: none;
+            appearance: none; /* Retire le style par défaut du navigateur */
+            -webkit-appearance: none;
+        }
+
+        .filter-select:hover {
             background-color: purple;
             color: white;
         }
-        .btn-paroles:hover { background-color: #5a005a; }
-        
-        .btn-video {
-            background-color: #ff0000;
-            color: white;
-        }
-        .btn-video:hover { background-color: #cc0000; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container"><div class="logo">AGLY</div></div>
+        <div class="logo-container">
+            <div class="logo">AGLY</div>
+            <div class="w3-spin">💿</div>
+        </div>
         <nav>
-            <a href="index.html">Accueil</a>
-            <a href="titres.html">Titres</a>
+            <a href="acceuil.html">Acceuil</a>
+            <a href="lyrics.html">Lyrics</a>
+            <a href="a propos.html">A propros</a>
+            <a href="profil.html">Profil</a>
         </nav>
     </header>
 
-    <div class="container">
-        <h1>Tous les Chants Gospel</h1>
+    <!-- Zone de recherche et filtres centrée -->
+    <div class="search-filter-container">
+        <input type="text" class="search-box" placeholder="Rechercher un chant, un lyric...">
+        
+        <div class="filter-container">
+            <!-- Tri par Langue -->
+            <select class="filter-select">
+                <option value="">Langue</option>
+                <option value="fr">Français</option>
+                <option value="en">Anglais</option>
+                <option value="es">Espagnol</option>
+            </select>
 
-        <div class="songs-list">
-            
-            <!-- Exemple 1 : Correspond au modèle avec un lien vidéo -->
-            <div class="song-item">
-                <div class="song-details">
-                    <div class="song-icon">🎵</div>
-                    <div class="song-info">
-                        <div class="song-title">Way Maker</div>
-                        <div class="song-artist">Sinach</div>
-                        <div class="badges">
-                            <span class="badge badge-theme">Adoration</span>
-                            <span class="badge badge-langue">Anglais (eng)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="song-actions">
-                    <!-- Ce bouton servira à ouvrir une page ou un popup avec le champ 'paroles' -->
-                    <a href="#" class="btn btn-paroles">Voir Paroles</a>
-                    <!-- Ce bouton utilise le champ 'lien' (Ex: YouTube) -->
-                    <a href="https://youtube.com..." target="_blank" class="btn btn-video">Vidéo</a>
-                </div>
-            </div>
+            <!-- Tri par Artiste -->
+            <select class="filter-select">
+                <option value="">Artiste</option>
+                <option value="artiste1">Artiste A</option>
+                <option value="artiste2">Artiste B</option>
+                <option value="artiste3">Artiste C</option>
+            </select>
 
-            <!-- Exemple 2 : Correspond au modèle SANS lien vidéo (Le bouton vidéo disparaît) -->
-            <div class="song-item">
-                <div class="song-details">
-                    <div class="song-icon">🎵</div>
-                    <div class="song-info">
-                        <div class="song-title">Je loue ton saint nom</div>
-                        <div class="song-artist">Chorale AMGL</div>
-                        <div class="badges">
-                            <span class="badge badge-theme">Louange</span>
-                            <span class="badge badge-langue">Français (fra)</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="song-actions">
-                    <a href="#" class="btn btn-paroles">Voir Paroles</a>
-                </div>
-            </div>
-
+            <!-- Tri par Thème -->
+            <select class="filter-select">
+                <option value="">Thème</option>
+                <option value="louange">Louange</option>
+                <option value="grace">Action de grâce</option>
+                <option value="adoration">Adoration</option>
+                <option value="foi">Foi</option>
+            </select>
         </div>
     </div>
 
