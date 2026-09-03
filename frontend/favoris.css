@@ -1,38 +1,58 @@
 body{
-    background-color: rgb(164, 74, 224);
-    color: rgb(7, 7, 7);
+    background-color: #e8e2e2;
+    color: #0a0a0a;
+    line-height: 1.6;
+    overflow: hidden;
 }
 header{
-    background-color: rgb(3, 3, 3);
-    color: purple;
-    justify-content: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding-top: 0;
-    margin-top: 0;
-    padding-left: 0;
-    margin-left: 0;
-    padding-right: 2px;
-    margin-right: 0px;
-    padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background-color: white;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
 }
 .fav{
     color: #000;
     height: 900;
 }
+.logo {
+        font-size: 24px;
+        font-weight: bold;
+        color: purple;
+        letter-spacing: 2px;
+        animation: pulseLogo 5s infinite ease-in-out;
+    }
 main{
     padding: 10px;
     margin: 10px;
 }
-nav{
-    color: purple;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    
-}
+
+nav a {
+        color: purple;
+        text-decoration: none;
+        margin-left: 20px;
+        transition: color 0.5s;
+        padding-bottom: 5px;
+        position: relative;
+    }
+
+nav a:hover {
+            color:black ;
+    }
+nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: purple;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
 .lien{
     cursor: pointer;
     transform: 5px;
@@ -62,5 +82,10 @@ h1{
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
-    justify-content: end;
+    display: flex;
+    text-align: end;
+    
+}
+#retour{
+    background-color: rgba(76, 226, 236, 0.527);
 }
