@@ -13,15 +13,18 @@
         }
          @media (max-width: 1200px) {
         body {
-            overflow: auto; 
-        }
-        }
+            overflow: auto;
+            scroll-behavior: smooth;
+        
+        }}
         body {
+            overflow: auto;
+            scroll-behavior: smooth;
             font-family: Arial, sans-serif;
             background-color: #e8e2e2;
             color: #000000;
             line-height: 1.6;
-            overflow: hidden;
+
         }
         header {
             display: flex;
@@ -86,6 +89,13 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
+        .w3-spin{
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1; 
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
 
     .Info {
         max-width: 600px;
@@ -97,6 +107,7 @@
         margin-top: 10px;
     }
     .Info2{
+        margin-bottom:50px;
         max-width: 600px;
         margin: auto;
         background: white;
@@ -167,12 +178,18 @@
     input[type="file"] {
         display: none; 
     }
+    footer{
+            color: #800080;
+        }
     </style>
 
 </head>
 <body>
     <header>
-        <div class="logo">AGLY</div>
+        <div>
+            <div class="logo">AGLY</div>
+            <div class="w3-spin">💿</div>
+        </div>
                 <nav>
                     <a href="acceuil.html">Acceuil</a>
                     <a href="lyrics.html">Lyrics</a>
@@ -180,11 +197,12 @@
                     <a href="profil.html">Profil</a>
                 </nav>
     </header>
+    <div>
     <div class="Info">
         <h1>Mon Profil</h1>
         <div class="profilInfo">
             <div class="profil">
-                <img src="https://via.placeholder.com/150" alt="Photo de profil" class="profilphoto" id="preview">
+                <img src="images\profil.png" alt="Photo de profil" class="profilphoto" id="preview">
                 <br>
                 <label for="fileInput" class="choix">Choisir une photo</label>
                 <input type="file" id="fileInput" accept="image/*">
@@ -207,6 +225,7 @@
         </ul>
         <button class="bouton1" onclick="clearFavorites()">Vider les favoris</button>
     </div>
+</div>
     <script>
         function editProfile() {
             alert('Fonction de modification en cours de développement.');
@@ -238,5 +257,8 @@
         preview.addEventListener('click', () => fileInput.click());
 </script>
     </script>
+    <footer>
+        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
+    </footer>
 </body>
 </html>
