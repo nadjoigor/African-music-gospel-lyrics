@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceuil</title>
+    <title>Titres</title>
     <style>
         * {
             margin: 0;
@@ -17,11 +17,6 @@
             line-height: 1.6;
             overflow: hidden;
         }
-        @media (max-width: 768px) {
-    body {
-        overflow: auto; 
-    }
-}
         header {
             display: flex;
             justify-content: space-between;
@@ -85,59 +80,15 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px
-        }
-        .image {
-            border-radius: 20px;
-            overflow: hidden;
-            display: inline-block;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            animation: bounceIn 1.2s ease-out;
-        }
-        .image img {
-            display: block;
-            object-fit: cover;
-            border-radius: 20px;
-        }
-        .image:hover {
-            transform: scale(1.04) translateY(-10px);
-            box-shadow: 0 20px 40px rgba(128, 0, 128, 0.2);
-        }
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: #181818;
-        }
-        h1:hover{transform: scale(1.05);
-        color: #800080;
-        }
-        p{
-            color: #555555;
-            font-size: 18px;
+        .recherche {
             max-width: 600px;
-            margin: 0 auto;
-
-        
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
         }
-        .hero p:hover {
-            color: #181818;
-            letter-spacing: 0.5px;
-        }
-        footer{
-            color: #800080;
-        }
-
     </style>
 </head>
 <body>
-    <!-- En-tête -->
     <header>
         <div class="logo-container">
             <div class="logo">AGLY</div>
@@ -151,17 +102,7 @@
             <a href="profil.html">Profil</a>
         </nav>
     </header>
-    <div class="hero">
-        <div class="image"><img src="images/image.png" alt="photo de profil" width="400px" height="400px"></div>
-        <section>
-            <h1>Vibrez au rythme de la musique</h1>
-            <p>Découvrez, écoutez et partagez vos chansons gospels préférées en illimité.</p>
-        </section>
-        <!--Pied de page-->
-            <footer>
-        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
-    </footer>
-    </div>
-    
+    <div class="recherche">
+        <input type="text" class="Barre de recherche" placeholder="Rechercher un lyric">
 </body>
 </html>
