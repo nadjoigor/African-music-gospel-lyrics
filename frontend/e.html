@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - AGLY</title>
+    <title>Titres</title>
     <style>
-        /* CSS DE BASE */
         * {
             margin: 0;
             padding: 0;
@@ -14,124 +13,168 @@
         }
         body {
             background-color: #e8e2e2;
-            color: #181818;
+            color: #333333; /* Changé en sombre pour la lisibilité sur fond clair */
             line-height: 1.6;
-            transition: background-color 0.5s, color 0.5s; /* Transition fluide */
         }
-        
-        /* Styles du mode sombre déclenchés par le JS */
-        body.dark-mode {
-            background-color: #181818;
-            color: #ffffff;
-        }
-        body.dark-mode h1, body.dark-mode p {
-            color: #ffffff;
-        }
-
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
             background-color: white;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
         }
-        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
         .logo {
             font-size: 24px;
             font-weight: bold;
             color: purple;
+            letter-spacing: 2px;
+            animation: pulseLogo 5s infinite ease-in-out;
+            display:inline-block;
         }
-
+        .w3-spin {
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1;
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #800080; }
+        }
         nav a {
             color: purple;
             text-decoration: none;
             margin-left: 20px;
+            transition: color 0.5s;
+            padding-bottom: 5px;
+            position: relative;
         }
         nav a:hover {
-            color: black;
+            color:black ;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: purple;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
 
-        /* Style du bouton simple */
-        .btn-mode {
-            background-color: purple;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
+        /* --- NOUVEAU STYLE RECHERCHE ET FILTRES --- */
+        .search-filter-container {
+            max-width: 600px;
+            margin: 40px auto; /* Centre le bloc horizontalement et l'espace du header */
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 16px;
+            border: 2px solid rgba(128, 0, 128, 0.2);
+            border-radius: 30px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .search-box:focus {
+            border-color: purple;
+            box-shadow: 0 4px 15px rgba(128, 0, 128, 0.15);
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap; /* Aligne proprement sur mobile */
+        }
+
+        .filter-select {
+            padding: 10px 20px;
+            font-size: 14px;
+            color: purple;
+            background-color: white;
+            border: 2px solid purple;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
-            margin-left: 20px;
+            transition: all 0.3s ease;
+            outline: none;
+            appearance: none; /* Retire le style par défaut du navigateur */
+            -webkit-appearance: none;
         }
 
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
+        .filter-select:hover {
+            background-color: purple;
+            color: white;
         }
-
-        /* Animation CSS basique au survol de l'image */
-        .image img {
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        .image img:hover {
-            transform: scale(1.05); /* Grossit juste un peu */
-        }
-        
-        .hero h1 {
-            font-size: 48px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- En-tête -->
     <header>
-        <div class="logo">AGLY</div>
+        <div class="logo-container">
+            <div class="logo">AGLY</div>
+            <div class="w3-spin">💿</div>
+        </div>
         <nav>
-            <a href="titres.html">Titres</a>
-            <a href="favoris.css">Favoris</a>
+            <a href="acceuil.html">Acceuil</a>
+            <a href="lyrics.html">Lyrics</a>
+            <a href="a propos.html">A propros</a>
             <a href="profil.html">Profil</a>
-            <a href="recherche.html">Rechercher</a>
-            <!-- Bouton pour le JavaScript -->
-            <button class="btn-mode" id="boutonMode">Mode Sombre</button>
         </nav>
     </header>
 
-    <!-- Zone Héros -->
-    <div class="hero">
-        <div class="image">
-            <img src="images/image.png" alt="photo de profil" width="400px" height="400px">
+    <!-- Zone de recherche et filtres centrée -->
+    <div class="search-filter-container">
+        <input type="text" class="search-box" placeholder="Rechercher un chant, un lyric...">
+        
+        <div class="filter-container">
+            <!-- Tri par Langue -->
+            <select class="filter-select">
+                <option value="">Langue</option>
+                <option value="fr">Français</option>
+                <option value="en">Anglais</option>
+                <option value="es">Espagnol</option>
+            </select>
+
+            <!-- Tri par Artiste -->
+            <select class="filter-select">
+                <option value="">Artiste</option>
+                <option value="artiste1">Artiste A</option>
+                <option value="artiste2">Artiste B</option>
+                <option value="artiste3">Artiste C</option>
+            </select>
+
+            <!-- Tri par Thème -->
+            <select class="filter-select">
+                <option value="">Thème</option>
+                <option value="louange">Louange</option>
+                <option value="grace">Action de grâce</option>
+                <option value="adoration">Adoration</option>
+                <option value="foi">Foi</option>
+            </select>
         </div>
-        <section>
-            <h1>Vibrez au rythme de la musique</h1>
-            <p>Découvrez, écoutez et partagez vos chansons gospels préférées en illimité.</p>
-        </section>
     </div>
 
-    <!-- JAVASCRIPT DE BASE -->
-    <script>
-        // On sélectionne le bouton et le corps (body) de la page
-        const bouton = document.getElementById('boutonMode');
-        const corpsPage = document.body;
-
-        // Quand on clique sur le bouton
-        bouton.addEventListener('click', function() {
-            // On ajoute ou on enlève la classe 'dark-mode' au body
-            corpsPage.classList.toggle('dark-mode');
-            
-            // On change le texte du bouton selon la situation
-            if (corpsPage.classList.contains('dark-mode')) {
-                bouton.textContent = "Mode Clair";
-            } else {
-                bouton.textContent = "Mode Sombre";
-            }
-        });
-    </script>
 </body>
 </html>
-
-
-
