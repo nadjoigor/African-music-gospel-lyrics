@@ -164,17 +164,17 @@
             <div class="w3-spin">💿</div>
         </div>
         <nav>
-            <a href="acceuil.html">Acceuil</a>
-            <a href="lyrics.html">Lyrics</a>
-            <a href="a propos.html">A propros</a>
-            <a href="profil.html">Profil</a>
+            <a href="{% url 'acceuil' %}">Acceuil</a>
+            {% comment %} <a href="{% url 'lyrics' %}">Parole</a> {% endcomment %}
+            <a href="{% url 'apropos' %}">A propros</a>
+            {% comment %} <a href="{% url 'profil' %}">Profil</a> {% endcomment %}
         </nav>
     </header>
     <main>
         <div class="cont">
             <h1>À propos de nous</h1>
                 
-            <h3>🎯 Notre Mission</h3>
+            <h3>Notre Mission</h3>
             <p>
                 <strong>African Music Gospel Lyrics</strong> est une plateforme dédiée à la valorisation du Gospel Africain. 
                      Notre objectif est de permettre à chaque chrétien de retrouver facilement les paroles de ses chants préférés, 
@@ -188,7 +188,7 @@
             </p>
             <div class="features-grid">
                 <div class="feature-item">
-                     <h3>✨ Fonctionnalités</h3>
+                     <h3>Fonctionnalités</h3>
                         <ul>
                         <li>
                             <b>Recherche Avancée</b> : Trouvez un chant par Artiste, Titre, Langue ou Thème : Louange, Adoration, Grâce...
@@ -206,7 +206,7 @@
                     
                 </div>
                 <div class="feature-item">
-                    <h3>🙏 Pourquoi ce projet ?</h3>
+                    <h3>Pourquoi ce projet ?</h3>
                     <p style="font-size: 16px; color: #b3b3b3;">
                     Combien de fois avons-nous cherché les paroles d'un chant pendant la louange ? 
                         Ce projet est né du besoin de centraliser le riche patrimoine musical Gospel Africain 
@@ -224,7 +224,7 @@
             </div>
 
         </div>
-        <a href="acceuil.html" class="btn-retour">← Retour </a>
+        <a href="{% url 'acceuil' %}" class="btn-retour">← Retour </a>
     </main>
     <footer>
         &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.

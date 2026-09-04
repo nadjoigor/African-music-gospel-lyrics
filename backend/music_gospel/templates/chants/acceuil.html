@@ -147,10 +147,10 @@
         </div>
 
         <nav>
-            <a href="acceuil.html">Acceuil</a>
-            <a href="lyrics.html">Lyrics</a>
-            <a href="a propos.html">A propros</a>
-            <a href="profil.html">Profil</a>
+            <a href="{% url 'acceuil' %}">Acceuil</a>
+            {% comment %} <a href="{% url 'parole' %}">Parole</a> {% endcomment %}
+            <a href="{% url 'apropos' %}">A propros</a>
+            {% comment %} <a href="{% url 'profil' %}">Profil</a> {% endcomment %}
         </nav>
     </header>
     <div class="hero">

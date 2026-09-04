@@ -10,3 +10,8 @@ def inscription(request):
      return render(request, 'chants/inscription.html')
 
 
+
+def apropos(request):
+    return render(request, 'chants/apropos.html')
+
+
