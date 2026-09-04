@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titres</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .lyrics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 15px;
+            flex: 1 1 calc(30% - 20px); /* Trois cartes par ligne */
+            position: relative;
+        }
+
+        .favorite {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .search-container { 
+            max-width: 600px; 
+            margin: 0 auto;
+            display: flex; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            border-radius: 10px; overflow: hidden;
+            padding: 10px; 
+        }
+        input { 
+            flex: 1; 
+            padding: 15px 25px; 
+            border: none; 
+            border-radius: 5px ;
+            font-size: 16px; 
+            outline: none; 
+            display: flex;
+            justify-content: space-between;
+        }
+        #searchButton { 
+            padding: 15px 30px; 
+            border: none;
+            border-radius: 8px; 
+            background-color: #a73798; 
+            color: white; 
+            font-size: 16px; 
+            cursor: pointer; transition: 0.2s; 
+        }
+        #searchButton:hover { 
+            background-color: #78cde7; 
+        }
+        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        @media (max-width: 1200px) {
+        body {
+            overflow: auto; 
+        }
+        }
+        body {
+            background-color: #e8e2e2;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; 
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: purple;
+            letter-spacing: 2px;
+            animation: pulseLogo 5s infinite ease-in-out;
+            display:inline-block;
+        }
+        .w3-spin {
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1; 
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #800080; }
+        }
+        nav a {
+            color: purple;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.5s;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        nav a:hover {
+            color:black ;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: purple;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .lyrics {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+        .carte{
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            transition: all 0.3s ease;
+            margin-top: 0;
+        }
+        .theme {
+            background-color: purple;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        .chanson {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .chanson:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(128, 0, 128, 0.15);
+        }
+        .titre {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .artiste {
+            font-size: 15px;
+            color: purple;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .lyrics {
+            color: #555555;
+            font-size: 14px;
+            font-style: italic;
+            border-left: 3px solid #e8e2e2;
+            padding-left: 10px;
+            white-space: pre-line;
+        }
+        .paroles {
+            display: none; /* Caché par défaut */
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e8e2e2;
+            color: #222;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            border-top: 1px solid #e8e2e2;
+            padding-top: 12px;
+        }
+        .langue {
+            background-color: #e8e2e2;
+            color: #555555;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .button-voir-plus{
+            padding: 10px;
+            background-color: purple;
+            border-radius: 8px;
+            color: wheat;
+        }
+        .button-voir-plus::hover{
+            transform: translateY(-5px);
+        }
+
+            </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">AGLY</div>
+            <div class="w3-spin">💿</div>
+        </div>
+
+        <nav>
+            <a href="acceuil.html">Acceuil</a>
+            <a href="lyrics.html">Lyrics</a>
+            <a href="a propos.html">A propros</a>
+            <a href="profil.html">Profil</a>
+        </nav>
+    </header>
+    <div class="search-container">
+    <input type="text" id="search-container" placeholder="Rechercher un titre, artiste, parole..."><button id="searchButton">Rechercher</button></div>
+        <div id="conteneurlyrics" ></div>
+        <!--Cartes-->
+        <div class="lyrics" id="lyrics">
+            <!--Louange-->
+        <div class="carte">
+            <div class="theme">Louange</div>
+            
+            <div class="chanson">
+                <div class="titre">Agbara (Power)</div>
+                <div class="artiste">JayMikee ft Gaise Baba</div>
+                <div class="lyrics">"Agbara! T’o ju agbara lo..."</div>
+                <div class="footer">
+                    <span class="langue">YOR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Imela</div>
+                <div class="artiste">Nathaniel Bassey</div>
+                <div class="lyrics">"Imela, imela\Thanks you Jesus\thanks you lord..."</div>
+                <div class="footer">
+                    <span class="langue">YOR, EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> 
+            <div class="chanson">
+                <div class="titre">You do this one</div>
+                <div class="artiste">Mercy chinwo</div>
+                <div class="lyrics">"You do this one for me..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> <div class="chanson">
+                <div class="titre">Too faithfull</div>
+                <div class="artiste">Moses bliss</div>
+                <div class="lyrics">"You are too faithfull to fail me..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> 
+            <div class="chanson">
+                <div class="titre">El Shaddai</div>
+                <div class="artiste">Debora Lukaku</div>
+                <div class="lyrics">"El Shaddai, Dieu tout puissant..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+        </div>
+        <!--Adoration-->
+        <div class="carte">
+            <div class="theme">Adoration</div>
+            
+            <div class="chanson">
+                <div class="titre">Tala delivrance</div>
+                <div class="artiste">Moise Mbiye</div>
+                <div class="lyrics">"Tala delivrance, tala delivrance..."</div>
+                <div class="footer">
+                    <span class="langue">LIN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Tu es Dieu</div>
+                <div class="artiste">Debora Lukaku</div>
+                <div class="lyrics">"Dieu, Tu es grand..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Way Maker</div>
+                <div class="artiste">Sinach</div>
+                <div class="lyrics">"Way moker, miracle power..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Yeho</div>
+                <div class="artiste">KS Bloom</div>
+                <div class="lyrics">"Dieu tu est roi..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Fungola</div>
+                <div class="artiste">Frank Mukuna</div>
+                <div class="lyrics">"Fungola, Fungola milimo..."</div>
+                <div class="footer">
+                    <span class="langue">LIN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+        </div>
+        <!--ACTION DE GRÂCE-->
+        <div class="carte">
+            <div class="theme">Action de Grâce</div>
+            
+            <div class="chanson">
+                <div class="titre">Merveilleux</div>
+                <div class="artiste">Indira</div>
+                <div class="lyrics">"Tu es merveilleux..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Je suis là</div>
+                <div class="artiste">Moise Mbiye</div>
+                <div class="lyrics">"Je suis là, Je suis là\Pour te louer seigneur..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Jesus</div>
+                <div class="artiste">Indira</div>
+                <div class="lyrics">"Jesus, Jesus\ le nom qui sauve..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Jehova</div>
+                <div class="artiste">Enita Adaba</div>
+                <div class="lyrics">"Jehova you are my mighty..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Nzambe Na Nga</div>
+                <div class="artiste">Mike Kalambay</div>
+                <div class="lyrics">"Nzambe na nga, \nYa solo eza no yo..."</div>
+                <div class="footer">
+                    <span class="langue">LIN</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+        <script>
+            const lyricsContainer = document.getElementById('lyrics-container');
+
+            songs.forEach((song, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="favorite" onclick="toggleFavorite(${index})">★</div>
+                    <h2>${song.title}</h2>
+                    <p>${song.lyrics}</p>
+                `;
+                lyricsContainer.appendChild(card);
+            });
+
+            function toggleFavorite(index) {
+                const favoriteIcon = document.querySelectorAll('.favorite')[index];
+                favoriteIcon.classList.toggle('fav');
+            }
+        </script>
+    <footer>
+        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
+    </footer>
+    New line 
+</body>
+</html>
