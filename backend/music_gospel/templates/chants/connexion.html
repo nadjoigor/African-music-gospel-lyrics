@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscripion</title>
+    <title>Connexion</title>
     <style>
         * {
             margin: 0;
@@ -115,7 +115,7 @@
         }
         .bouton-bas{
             margin-top:6px;
-            margin-bottom:6px;
+            margin-bottom:15px;
             padding:5px;
         }
 
@@ -127,41 +127,21 @@
         <h1>AGLY</h1>
         <p><Strong>African muscic gospel lyrics</Strong></p>
     </header>
-
     <form method="POST">
-        {% csrf_token %}
+        {% csrf_token %}        
             <div>
-                <div class="form-group">
-                <label for="Nom">Nom</label>
-                <input type="text" id="Nom" name="username" placeholder="Mettez votre nom" value={{form.last_name.value|default:""}} required>
-            </div><br>
-            <div>
-                <div class="form-group">
-                <label for="Nom">Prenom</label>
-                <input type="text" id="Nom" name="username" placeholder="Mettez votre prénom " value={{form.first_name.value|default:""}} required>
-            </div><br>
-            <div>
-                <div class="form-group">
-                <label for="Nom">Nom d'utilisateur(Pseudonyme)</label>
-                <input type="text" id="Nom" name="username" placeholder="Mettez un nom d'utilisateur" value={{form.username.value|default:""}} required>
-            </div><br>
-            <div>
-                <label for="email">Adresse Email</label>
-                <input type="email" id="email" name="email" placeholder="Ex: votremail@gmail.com" value={{form.email.value|default:""}} required>
-            </div><br>
-            <div>
-                <label for="password">Mot de passe</label>
-                <input type="password" id="Mot de passe" name="password" class='password1' placeholder="Créez un mot de passe " value={{form.password.value|default:""}} required>
+                <label for="email">Adresse Email ou Pseudonyme</label>
+                <input type="email" id="email" name="email" placeholder="Ex: votremail@gmail.com" required>
             </div><br>
              <div>
                 <label for="password">Mot de passe</label>
-                <input type="password" id="Mot de passe" class='password2' placeholder="Créez un mot de passe " value={{form.password2.value|default:""}} required>
+                <input type="password" id="Mot de passe"class='password' placeholder="Créez un mot de passe " required>
             </div><br>
-            <button type="submit" class='bouton-bas'>Créer mon compte</button>
-            
-        </form> 
-            <p>Déjà un compte ?<a class='bouton-bas' href="{% url 'connexion' %}" > Se connecter</a></p>
+            <button type="submit" class='bouton-bas'>Se connecter</button>
+            <p >Vous n'avez pas de compte ?<a class='bouton-bas' href="{% url 'inscription' %}" > S'Inscrire</a></p>
 
+        </form> 
+            
         <!--Pied de page-->
     <footer>
         &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.

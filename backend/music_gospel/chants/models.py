@@ -1,6 +1,6 @@
 from django.db import models
 import pycountry
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -25,3 +25,13 @@ class Chant(models.Model):
         return f"{self.titre} {self.artiste} {self.get_langue_display()} "
 
 
+class Profil(models.Model):
+    
+    # Relie le profil à un utilisateur Django
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    # Champ pour la photo de profil
+    profil_image = models.ImageField(upload_to='profil/', blank=True, null=True)
+
+    def __str__(self):
+        return f"Profil de {self.user}"

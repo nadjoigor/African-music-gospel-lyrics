@@ -191,10 +191,9 @@
             <div class="w3-spin">💿</div>
         </div>
                 <nav>
-                    <a href="acceuil.html">Acceuil</a>
-                    <a href="lyrics.html">Lyrics</a>
+                    <a href={% url "acceuil" %}>Acceuil</a>
+                    {% comment %} <a href={% url "lyrics" %}>Lyrics</a> {% endcomment %}
                     <a href="a propos.html">A propros</a>
-                    <a href="profil.html">Profil</a>
                 </nav>
     </header>
     <div>
@@ -207,12 +206,13 @@
                 <label for="fileInput" class="choix">Choisir une photo</label>
                 <input type="file" id="fileInput" accept="image/*">
             </div>
-                <h3>Nom: </h3><p>Jean Dupont</p>
-                <h3>Email:</h3><p>Jean@example.com</p>
-                <h3>Eglise:</h3><p>Saint Jean de Dieu</p>
+                <h3>Pseudonyme </h3><p>{{utilisateur.username}}</p>
+                <h3>Prenom </h3><p>{{utilisateur.first_name}}</p>
+                <h3>Nom: </h3><p> {{utilisateur.last_name}} </p>
+                <h3>Email:</h3><p>{{utilisateur.email}}</p>
                 <div class="bouton">
-                    <button class="bouton1" onclick="editProfile()">Modifier</button>
-                    <button class="bouton1" onclick="deconnected()">Se deconnecter</button>
+                    <button class="bouton1" >Modifier</button>
+                    <a href= {% url "deconnexion" %} ><button class="bouton1" >Se deconnecter</button></a>
                 </div>
             </div>
     </div>
