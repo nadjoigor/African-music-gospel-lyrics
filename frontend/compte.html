@@ -73,6 +73,8 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
+            padding: 10px;
+            margin-bottom: 15px;
         }
         button:hover {
             background-color: #800080;
@@ -103,16 +105,22 @@
         .buttonconnexion{
             background-color: transparent;
             color:black;
-            text-decoration: underline;
             font-weight: 100;
         }
         .conteneur{
-            /*border:2px solid black;*/
+            
             margin-top: 9px;
             padding-left: 15px;
             display: flex;
             flex-direction: row;
             gap: 3px;
+        }
+        .creer-mon-compte{
+            background-color: #800080;
+            color:black;
+            font-weight: 100;
+            border-radius: 8px;
+            padding: 8px;
         }
     </style>
 </head>
@@ -140,11 +148,11 @@
                 <button type="submit">Créer mon compte</button>
             </div>
             <div class="conteneur">
-                <p>Déjà un compte ?</p> <button class="buttonconnexion" type="submit">Se connecter</button>
+                <p>Déjà un compte ?</p> <a class="creer-mon-compte" href="se connecter.html">Se connecter</a>
             </div>
         </form> 
-        <!--Pied de page-->
-            <footer>
+
+    <footer>
         &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
     </footer>
 
