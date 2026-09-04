@@ -4,18 +4,261 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+         @media (max-width: 1200px) {
+        body {
+            overflow: auto;
+            scroll-behavior: smooth;
+        
+        }}
+        body {
+            overflow: auto;
+            scroll-behavior: smooth;
+            font-family: Arial, sans-serif;
+            background-color: #e8e2e2;
+            color: #000000;
+            line-height: 1.6;
+
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; 
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: purple;
+            letter-spacing: 2px;
+            animation: pulseLogo 5s infinite ease-in-out;
+            display:inline-block;
+        }
+        .w3-spin {
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1; 
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #800080; }
+        }
+        nav a {
+            color: purple;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.5s;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        nav a:hover {
+            color:black ;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: purple;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .w3-spin{
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1; 
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
+
+    .Info {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(12, 11, 11, 0.1);
+        margin-top: 10px;
+    }
+    .Info2{
+        margin-bottom:50px;
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(12, 11, 11, 0.1);
+        margin-top: 10px;    
+    }
+
+    h1,h2 {
+        color: #333;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bouton {
+        display: flex;
+        justify-content: space-between;
+    }
+    .bouton1{
+        background-color: #b44eb4;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        border: none;
+        color: white;
+    }
+
+    button:hover {
+        background-color: #459aa0;
+        transform: translateY(-5px);
+    }
+    .profil {
+        text-align: center;
+    }
+
+    .profilphoto {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%; 
+        object-fit: cover; 
+        border: 1px solid #be33f5;
+        background: #ddd;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-bottom: 17px;
+    }
+
+
+    .choix {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background: #be33f5;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .choix:hover {
+        background: #0d65d9;
+        transition-duration: 0.3s;
+    }
+
+    input[type="file"] {
+        display: none; 
+    }
+    footer{
+            color: #800080;
+        }
+    </style>
+
 </head>
 <body>
-<header>
+    <header>
+        <div>
+            <div class="logo">AGLY</div>
+            <div class="w3-spin">💿</div>
+        </div>
+                <nav>
+                    <a href="acceuil.html">Acceuil</a>
+                    <a href="lyrics.html">Lyrics</a>
+                    <a href="a propos.html">A propros</a>
+                    <a href="profil.html">Profil</a>
+                </nav>
+    </header>
+    <div>
+    <div class="Info">
+        <h1>Mon Profil</h1>
+        <div class="profilInfo">
+            <div class="profil">
+                <img src="images\profil.png" alt="Photo de profil" class="profilphoto" id="preview">
+                <br>
+                <label for="fileInput" class="choix">Choisir une photo</label>
+                <input type="file" id="fileInput" accept="image/*">
+            </div>
+                <h3>Nom: </h3><p>Jean Dupont</p>
+                <h3>Email:</h3><p>Jean@example.com</p>
+                <h3>Eglise:</h3><p>Saint Jean de Dieu</p>
+                <div class="bouton">
+                    <button class="bouton1" onclick="editProfile()">Modifier</button>
+                    <button class="bouton1" onclick="deconnected()">Se deconnecter</button>
+                </div>
+            </div>
+    </div>
+    <div class="Info2">
+        <h2>Mes Favoris</h2>
+        <ul id="favorites-list">
+            <li>Lyric 1</li>
+            <li>Lyric 2</li>
+            <li>Lyric 3</li>
+        </ul>
+        <button class="bouton1" onclick="clearFavorites()">Vider les favoris</button>
+    </div>
+</div>
+    <script>
+        function editProfile() {
+            alert('Fonction de modification en cours de développement.');
+        }
+        function deconnected(){
+            alert('Deconnection.');
+        }
     
-</header>
-    <main>
-            <section id="profilPage" class="profilpage">
-                <h2>Mon profil</h2>
-                <p>Nom d'utilisateur: <span id="username"></span></p>
-                <p>Email: <span id="email">    
-    </main>             
+    
+        function clearFavorites() {
+            document.getElementById('favorites-list').innerHTML = '';
+            alert('Vos favoris ont été vidés.');
+        }
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
 
-    
+        fileInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result; // affiche l'image choisie
+            }
+            reader.readAsDataURL(file);
+            }
+        });
+
+        // Cliquer sur l'image ouvre aussi le sélecteur
+        preview.addEventListener('click', () => fileInput.click());
+</script>
+    </script>
+    <footer>
+        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
+    </footer>
 </body>
 </html>
