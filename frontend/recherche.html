@@ -6,6 +6,30 @@
     <title>Rechercher</title>
 </head>
 <body>
-    
+    <script>
+            const songs = [
+                { title: "Chanson 1", lyrics: "Alléluiya" },
+                { title: "Chanson 2", lyrics: "Voici les paroles de la chanson 2..." },
+                { title: "Chanson 3", lyrics: "Voici les paroles de la chanson 3..." }
+            ];
+
+            const lyricsContainer = document.getElementById('lyrics-container');
+
+            songs.forEach((song, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="favorite" onclick="toggleFavorite(${index})">★</div>
+                    <h2>${song.title}</h2>
+                    <p>${song.lyrics}</p>
+                `;
+                lyricsContainer.appendChild(card);
+            });
+
+            function toggleFavorite(index) {
+                const favoriteIcon = document.querySelectorAll('.favorite')[index];
+                favoriteIcon.classList.toggle('fav');
+            }
+        </script>
 </body>
 </html>

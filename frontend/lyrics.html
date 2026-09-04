@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Titres</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
         h1 {
             text-align: center;
             color: #333;
@@ -54,21 +60,13 @@
             padding: 15px 30px; 
             border: none;
             border-radius: 8px; 
-            background-color: #319795; 
+            background-color: purple; 
             color: white; 
             font-size: 16px; 
             cursor: pointer; transition: 0.2s; 
         }
         #searchButton:hover { 
-            background-color: #2c7a7b; 
-        }
-        
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            background-color: purple; 
         }
         @media (max-width: 1200px) {
         body {
@@ -144,9 +142,86 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
-        
-
-    </style>
+        .lyrics {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+        .carte{
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            transition: all 0.3s ease;
+        }
+        .theme {
+            background-color: purple;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .chanson {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .chanson:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(128, 0, 128, 0.15);
+        }
+        .titre {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .artiste {
+            font-size: 15px;
+            color: purple;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .lyrics {
+            color: #555555;
+            font-size: 14px;
+            font-style: italic;
+            border-left: 3px solid #e8e2e2;
+            padding-left: 10px;
+            white-space: pre-line;
+        }
+        .paroles {
+            display: none; /* Caché par défaut */
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e8e2e2;
+            color: #222;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            border-top: 1px solid #e8e2e2;
+            padding-top: 12px;
+        }
+        .langue {
+            background-color: #e8e2e2;
+            color: #555555;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+            </style>
 </head>
 <body>
     <header>
@@ -161,37 +236,69 @@
             <a href="a propos.html">A propros</a>
             <a href="profil.html">Profil</a>
         </nav>
-        
     </header>
     <div class="search-container">
     <input type="text" id="search-container" placeholder="Rechercher un titre, artiste, parole..."><button id="searchButton">Rechercher</button></div>
-        <h1>Lyrics</h1>
         <div id="conteneurlyrics" ></div>
-        <script>
-            const songs = [
-                { title: "Chanson 1", lyrics: "Alléluiya" },
-                { title: "Chanson 2", lyrics: "Voici les paroles de la chanson 2..." },
-                { title: "Chanson 3", lyrics: "Voici les paroles de la chanson 3..." }
-            ];
+        <!--Cartes-->
+        <div class="lyrics" id="lyrics">
+            <!--Louange-->
+        <div class="carte">
+            <div class="theme">Louange</div>
+            
+            <div class="chanson">
+                <div class="titre">Je louerai Ton Nom</div>
+                <div class="artiste">Artiste Gospel A</div>
+                <div class="lyrics">"Je louerai Ton Nom Seigneur, De tout mon cœur..."</div>
+                <div class="paroles">
+                    CHANTS DE LOUANGE
+                </div>
+                <div class="footer">
+                    <span class="langue">FRA</span>
+                    <a href="detail.html"><button class="btn-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+        </div>
+        <!--Adoration-->
+        <div class="carte">
+            <div class="theme">Adoration</div>
+            
+            <div class="chanson">
+                <div class="titre">Devant Ton Trône</div>
+                <div class="artiste">Artiste Gospel B</div>
+                <div class="lyrics">"Saint, Saint, Saint est Ton Nom..."</div>
+                <div class="paroles">
+                    Nous prosternons nos cœurs devant Ta majesté.<br>
+                    Que Ton Esprit descende et inonde ce lieu.<br>
+                    Reçois l'adoration de Tes enfants assemblés.
+                </div>
+                <div class="footer">
+                    <span class="langue">FRA</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+        </div>
+        <!--ACTION DE GRÂCE-->
+        <div class="carte">
+            <div class="theme">Action de Grâce</div>
+            
+            <div class="chanson">
+                <div class="titre">Merci pour Tes Bienfaits</div>
+                <div class="artiste">Artiste Gospel C</div>
+                <div class="lyrics">"Pour la vie que Tu m'as donnée..."</div>
+                <div class="paroles">
+                    Pour Ta grâce infinie et Ton amour quotidien.<br>
+                    Quand j'étais tombé, Ta main m'a relevé.<br>
+                    Je Te dis merci, ô Éternel mon Dieu.
+                </div>
+                <div class="footer">
+                    <span class="langue">LIN</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            const lyricsContainer = document.getElementById('lyrics-container');
-
-            songs.forEach((song, index) => {
-                const card = document.createElement('div');
-                card.className = 'card';
-                card.innerHTML = `
-                    <div class="favorite" onclick="toggleFavorite(${index})">★</div>
-                    <h2>${song.title}</h2>
-                    <p>${song.lyrics}</p>
-                `;
-                lyricsContainer.appendChild(card);
-            });
-
-            function toggleFavorite(index) {
-                const favoriteIcon = document.querySelectorAll('.favorite')[index];
-                favoriteIcon.classList.toggle('fav');
-            }
-        </script>
 
 </body>
 </html>
