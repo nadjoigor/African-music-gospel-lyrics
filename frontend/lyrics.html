@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Titres</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
         h1 {
             text-align: center;
             color: #333;
@@ -79,7 +85,6 @@
             background-color: #e8e2e2;
             color: #ffffff;
             line-height: 1.6;
-            overflow: hidden;
         }
         header {
             display: flex;
@@ -144,9 +149,97 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
-        
+        .lyrics {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+        .carte{
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            transition: all 0.3s ease;
+            margin-top: 0;
+        }
+        .theme {
+            background-color: purple;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        .chanson {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .chanson:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(128, 0, 128, 0.15);
+        }
+        .titre {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .artiste {
+            font-size: 15px;
+            color: purple;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .lyrics {
+            color: #555555;
+            font-size: 14px;
+            font-style: italic;
+            border-left: 3px solid #e8e2e2;
+            padding-left: 10px;
+            white-space: pre-line;
+        }
+        .paroles {
+            display: none; /* Caché par défaut */
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e8e2e2;
+            color: #222;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            border-top: 1px solid #e8e2e2;
+            padding-top: 12px;
+        }
+        .langue {
+            background-color: #e8e2e2;
+            color: #555555;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .button-voir-plus{
+            padding: 10px;
+            background-color: purple;
+            border-radius: 8px;
+            color: wheat;
+        }
+        .button-voir-plus::hover{
+            transform: translateY(-5px);
+        }
 
-    </style>
+            </style>
 </head>
 <body>
     <header>
@@ -161,19 +254,164 @@
             <a href="a propos.html">A propros</a>
             <a href="profil.html">Profil</a>
         </nav>
-        
     </header>
     <div class="search-container">
     <input type="text" id="search-container" placeholder="Rechercher un titre, artiste, parole..."><button id="searchButton">Rechercher</button></div>
-        <h1>Lyrics</h1>
         <div id="conteneurlyrics" ></div>
+        <!--Cartes-->
+        <div class="lyrics" id="lyrics">
+            <!--Louange-->
+        <div class="carte">
+            <div class="theme">Louange</div>
+            
+            <div class="chanson">
+                <div class="titre">Agbara (Power)</div>
+                <div class="artiste">JayMikee ft Gaise Baba</div>
+                <div class="lyrics">"Agbara! T’o ju agbara lo..."</div>
+                <div class="footer">
+                    <span class="langue">YOR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Imela</div>
+                <div class="artiste">Nathaniel Bassey</div>
+                <div class="lyrics">"Imela, imela\Thanks you Jesus\thanks you lord..."</div>
+                <div class="footer">
+                    <span class="langue">YOR, EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> 
+            <div class="chanson">
+                <div class="titre">You do this one</div>
+                <div class="artiste">Mercy chinwo</div>
+                <div class="lyrics">"You do this one for me..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> <div class="chanson">
+                <div class="titre">Too faithfull</div>
+                <div class="artiste">Moses bliss</div>
+                <div class="lyrics">"You are too faithfull to fail me..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> 
+            <div class="chanson">
+                <div class="titre">El Shaddai</div>
+                <div class="artiste">Debora Lukaku</div>
+                <div class="lyrics">"El Shaddai, Dieu tout puissant..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+        </div>
+        <!--Adoration-->
+        <div class="carte">
+            <div class="theme">Adoration</div>
+            
+            <div class="chanson">
+                <div class="titre">Tala delivrance</div>
+                <div class="artiste">Moise Mbiye</div>
+                <div class="lyrics">"Tala delivrance, tala delivrance..."</div>
+                <div class="footer">
+                    <span class="langue">LIN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Tu es Dieu</div>
+                <div class="artiste">Debora Lukaku</div>
+                <div class="lyrics">"Dieu, Tu es grand..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Way Maker</div>
+                <div class="artiste">Sinach</div>
+                <div class="lyrics">"Way moker, miracle power..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Yeho</div>
+                <div class="artiste">KS Bloom</div>
+                <div class="lyrics">"Dieu tu est roi..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Fungola</div>
+                <div class="artiste">Frank Mukuna</div>
+                <div class="lyrics">"Fungola, Fungola milimo..."</div>
+                <div class="footer">
+                    <span class="langue">LIN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+        </div>
+        <!--ACTION DE GRÂCE-->
+        <div class="carte">
+            <div class="theme">Action de Grâce</div>
+            
+            <div class="chanson">
+                <div class="titre">Merveilleux</div>
+                <div class="artiste">Indira</div>
+                <div class="lyrics">"Tu es merveilleux..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Je suis là</div>
+                <div class="artiste">Moise Mbiye</div>
+                <div class="lyrics">"Je suis là, Je suis là\Pour te louer seigneur..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Jesus</div>
+                <div class="artiste">Indira</div>
+                <div class="lyrics">"Jesus, Jesus\ le nom qui sauve..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Jehova</div>
+                <div class="artiste">Enita Adaba</div>
+                <div class="lyrics">"Jehova you are my mighty..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Nzambe Na Nga</div>
+                <div class="artiste">Mike Kalambay</div>
+                <div class="lyrics">"Nzambe na nga, \nYa solo eza no yo..."</div>
+                <div class="footer">
+                    <span class="langue">LIN</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
         <script>
-            const songs = [
-                { title: "Chanson 1", lyrics: "Alléluiya" },
-                { title: "Chanson 2", lyrics: "Voici les paroles de la chanson 2..." },
-                { title: "Chanson 3", lyrics: "Voici les paroles de la chanson 3..." }
-            ];
-
             const lyricsContainer = document.getElementById('lyrics-container');
 
             songs.forEach((song, index) => {
@@ -195,5 +433,6 @@
     <footer>
         &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
     </footer>
+    New line 
 </body>
 </html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lyrics - AGLY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #e8e2e2;
+            color: #181818;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        /* 1. ZONE DE RECHERCHE */
+        .search-section {
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            text-align: center;
+        }
+        .search-section h1 {
+            color: purple;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        .search-container {
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .search-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        /* 2. STRUCTURE DES COLONNES */
+        .lyrics-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+        .theme-column {
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            transition: all 0.3s ease;
+        }
+        .theme-title {
+            background-color: purple;
+            color: white;
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* 3. DESIGN DES CARTES */
+        .song-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .song-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(128, 0, 128, 0.15);
+        }
+        .song-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .song-artist {
+            font-size: 15px;
+            color: purple;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        /* Gestion de l'affichage des paroles (Preview vs Complet) */
+        .song-lyrics-preview {
+            color: #555555;
+            font-size: 14px;
+            font-style: italic;
+            border-left: 3px solid #e8e2e2;
+            padding-left: 10px;
+            white-space: pre-line;
+        }
+        .full-lyrics {
+            display: none; /* Caché par défaut */
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #e8e2e2;
+            color: #222;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            border-top: 1px solid #e8e2e2;
+            padding-top: 12px;
+        }
+        .lang-badge {
+            background-color: #e8e2e2;
+            color: #555555;
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Bouton dynamique pour lire la suite */
+        .btn-read-more {
+            background-color: purple;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none; /* Apparaît en JS au clic sur la carte */
+        }
+
+        /* Bouton Retour (Caché au début) */
+        .btn-back {
+            display: none;
+            background-color: #181818;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 auto 30px auto;
+        }
+
+        /* CLASSES JS POUR TOUT MASQUER SAUF LA SÉLECTION */
+        .hidden-element {
+            display: none !important;
+        }
+        .focused-card {
+            max-width: 600px !important;
+            margin: 0 auto;
+            flex: none;
+            width: 100%;
+        }
+        .btn-read-more {
+            background-color: purple;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;
+        }
+        .btn-back {
+            display: none;
+            background-color: #181818;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0 auto 30px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de Recherche -->
+    <div class="search-section">
+        <h1>Rechercher un chant Gospel</h1>
+        <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="Tapez le titre ou l'artiste...">
+        </div>
+    </div>
+
+    <!-- Bouton Retour -->
+    <button id="btnBack" class="btn-back">⬅️ Retour aux thèmes</button>
+
+    <!-- Conteneur des Paroles -->
+    <div class="lyrics-container" id="lyricsContainer">
+
+        <!-- COLONNE LOUANGE -->
+        <div class="theme-column">
+            <div class="theme-title">Louange</div>
+            
+            <div class="song-card">
+                <div class="song-title">Je louerai Ton Nom</div>
+                <div class="song-artist">Artiste Gospel A</div>
+                <div class="song-lyrics-preview">"Je louerai Ton Nom Seigneur, De tout mon cœur..."</div>
+                <div class="full-lyrics">
+                    Tu es mon Sauveur, ma force et mon bouclier.<br>
+                    Chaque jour, ma bouche chantera Tes louanges.<br>
+                    Alléluia, Tu es digne de régner !
+                </div>
+                <div class="card-footer">
+                    <span class="lang-badge">FRA</span>
+                    <button class="btn-read-more">Voir les paroles</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLONNE ADORATION -->
+        <div class="theme-column">
+            <div class="theme-title">Adoration</div>
+            
+            <div class="song-card">
+                <div class="song-title">Devant Ton Trône</div>
+                <div class="song-artist">Artiste Gospel B</div>
+                <div class="song-lyrics-preview">"Saint, Saint, Saint est Ton Nom..."</div>
+                <div class="full-lyrics">
+                    Nous prosternons nos cœurs devant Ta majesté.<br>
+                    Que Ton Esprit descende et inonde ce lieu.<br>
+                    Reçois l'adoration de Tes enfants assemblés.
+                </div>
+                <div class="card-footer">
+                    <span class="lang-badge">FRA</span>
+                    <button class="btn-read-more">Voir les paroles</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLONNE ACTION DE GRÂCE -->
+        <div class="theme-column">
+            <div class="theme-title">Action de Grâce</div>
+            
+            <div class="song-card">
+                <div class="song-title">Merci pour Tes Bienfaits</div>
+                <div class="song-artist">Artiste Gospel C</div>
+                <div class="song-lyrics-preview">"Pour la vie que Tu m'as donnée..."</div>
+                <div class="full-lyrics">
+                    Pour Ta grâce infinie et Ton amour quotidien.<br>
+                    Quand j'étais tombé, Ta main m'a relevé.<br>
+                    Je Te dis merci, ô Éternel mon Dieu.
+                </div>
+                <div class="card-footer">
+                    <span class="lang-badge">LIN</span>
+                    <button class="btn-read-more">Voir les paroles</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JAVASCRIPT DE BASE -->
+    <script>
+        const cards = document.querySelectorAll('.song-card');
+        const columns = document.querySelectorAll('.theme-column');
+        const btnBack = document.getElementById('btnBack');
+        const searchInput = document.getElementById('searchInput');
+
+        // 1. GESTION DU CLIC SUR UNE CARTE (ISOLEMENT ET SUITE DES PAROLES)
+        cards.forEach(card => {
+            const btnMore = card.querySelector('.btn-read-more');
+            const fullLyrics = card.querySelector('.full-lyrics');
+
+            card.addEventListener('click', function(e) {
+                // Si on a déjà isolé la carte, on ne fait rien de plus au clic simple
+                if (card.parentElement.classList.contains('focused-card')) return;
+
+                // Réinitialise d'abord tous les boutons "Voir les paroles"
+                document.querySelectorAll('.btn-read-more').forEach(b => b.style.display = 'none');
+                
+                // Affiche uniquement le bouton de la carte cliquée
+                btnMore.style.display = 'block';
+            });
+
+            // Événement sur le bouton "Voir les paroles"
+            btnMore.addEventListener('click', function(e) {
+                e.stopPropagation(); // Empêche de relancer le clic de la carte
+
+                // 1. Masquer toutes les autres colonnes
+                columns.forEach(col => {
+                    if (!col.contains(card)) {
+                        col.classList.add('hidden-element');
+                    } else {
+                        col.classList.add('focused-card');
+                        col.querySelector('.theme-title').classList.add('hidden-element');
+                    }
+                });
+
+                // 2. Masquer les autres cartes de la même colonne (au cas où il y en a plusieurs)
+                cards.forEach(c => {
+                    if (c !== card) c.classList.add('hidden-element');
+                });
+
+                // 3. Afficher les paroles complètes et le bouton retour

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        @media (max-width: 1200px) {
+        body {
+            overflow: auto; 
+        }
+        }
+        body {
+            background-color: #e8e2e2;
+            color: rgb(78, 76, 76);
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px; 
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: purple;
+            letter-spacing: 2px;
+            animation: pulseLogo 5s infinite ease-in-out;
+            display:inline-block;
+        }
+        .w3-spin {
+            display: inline-block;
+            font-size: 26px;
+            line-height: 1; 
+            animation: rotation-infinie 4s infinite linear;
+            cursor: pointer;
+        }
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); color: #800080; }
+        }
+        nav a {
+            color: purple;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.5s;
+            padding-bottom: 5px;
+            position: relative;
+        }
+        nav a:hover {
+            color:black ;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: purple;
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">AGLY</div>
+            <div class="w3-spin">💿</div>
+        </div>
+
+        <nav>
+            <a href="acceuil.html">Acceuil</a>
+            <a href="lyrics.html">Lyrics</a>
+            <a href="a propos.html">A propros</a>
+            <a href="profil.html">Profil</a>
+        </nav>
+    </header>
+    
+            <p>
+                Agbara! T’o ju agbara lo (Power! That surpasses every power)
+                Agbara! (Power!) <br>
+
+                Omo, we wrestle so mo (Goodness, we wrestle you know)
+                Ko ya mo’bi to ma to si o (Therefore, know your place)
+                Life is a battle, so mo (You know)
+                Ogun laye ore (Friend–Life is a battle), powers clash
+                Iseju kan pere, wo yawa gas (Chaos happen in an instant)
+                Ome ole lo ma fori e f’agbon (Let the foolish fight the hard battles)
+                I go meet person wey get power pass
+                Mo sa wonu Jesu, mo ti gbaradi (I run to Jesus to be fortified)
+                Mo ti gba agbara to gbagbara mi (I’ve gotten a power that swallows power)
+                Awon ogun orun ready pelu ida lowo (Heavenly hosts are armed and on standby)
+                Anytime to ba d’ijakadi (When it turns into a battle) <br>
+
+                Agbara ti Mose fi p’okun niya (The power Moses used to part the Red Sea)
+                Sona kale fun woli Elijah (That brought fire for Prophet Elijah)
+                Ti m nba activate, ko nse sere sere (Once I activate it it is not a game)
+                To ba ti ri mi, koya (Once You see me, run)
+                Wo, ma lo speculate (Look, do not speculate)
+                Esu daddy yin gan (Even with the devil, your father)
+                T’o ga gb’oruko Jesu, a sa (He will flee at hearing the Name of Jesus) <br>
+
+                Refrain:
+                Agbara! T’o ju agbara lo (Power! That surpasses every power)
+                Agbara! (Power!)
+                Ina n’ jo, Ogun esu fe le le (Fire’s burning, the devil’s war is about to be defeated)
+                Agbara! T’o ju agbara lo (Power! That surpasses every power)
+                Agbara! (Power!)
+
+                Eni ti oju re nko monamona (The One whose eyes blaze with fire)
+                Iri si Oluwa nba ni leru jojo (The Lord’s presence overwhelms with trembling)
+                Owo Oluwa nfa igi kedari ya o (God’s mighty hands breaks all barriers)
+                Oruka Oluwa ile iso agbara (The Name of the Lord is a strong tower)
+
+                Esu, wa bigba! (Satan, be gone!)
+                Sogi gun! (Run!)
+                Sada nu! (Shoo!)
+                Jada nu! (Begone!)
+                Eh, Mo ni o re lule (I say topple down)
+                Ja lule (Fall down)
+                Ku danu (Die)
+                Sa lule (Be defeated)
+                Ki o da san (Become nothing)
+
+                I get rod for hand, dem get rod for hand too
+                I drop rod for ground, dem drop theirs too
+                Opa mi d’ejo (My rod became a snake)
+                Opan wn naa d’ejo (Their rods became snakes too)
+                Sugbon ejo won d’ounje f’ejo mi (But my snake swallowed theirs)
+
+                Taani iwo oke nla? (Who are you, mighty mountain?)
+                Iwo yoo di petele (You shall become a plain)
+                Niwaju (Before) Zerubbabel
+                They can’t step to this
+
+                Principalities can’t step to this
+                Rulers of the darkness, can’t step to this
+                Even spiritual wickedness, they can’t step to this
+
+                (Refrain)
+
+        Source: https://africangospellyrics.com
+
+</p>
+</body>
+</html>
