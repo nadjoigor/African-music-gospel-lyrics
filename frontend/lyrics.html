@@ -60,13 +60,21 @@
             padding: 15px 30px; 
             border: none;
             border-radius: 8px; 
-            background-color: purple; 
+            background-color: #a73798; 
             color: white; 
             font-size: 16px; 
             cursor: pointer; transition: 0.2s; 
         }
         #searchButton:hover { 
-            background-color: purple; 
+            background-color: #78cde7; 
+        }
+        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
         @media (max-width: 1200px) {
         body {
@@ -77,7 +85,6 @@
             background-color: #e8e2e2;
             color: #ffffff;
             line-height: 1.6;
-            overflow: hidden;
         }
         header {
             display: flex;
@@ -156,6 +163,7 @@
             min-width: 300px;
             max-width: 380px;
             transition: all 0.3s ease;
+            margin-top: 0;
         }
         .theme {
             background-color: purple;
@@ -164,7 +172,7 @@
             border-radius: 10px;
             text-align: center;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 2px;
         }
         .chanson {
             background-color: white;
@@ -221,6 +229,16 @@
             border-radius: 5px;
             font-weight: bold;
         }
+        .button-voir-plus{
+            padding: 10px;
+            background-color: purple;
+            border-radius: 8px;
+            color: wheat;
+        }
+        .button-voir-plus::hover{
+            transform: translateY(-5px);
+        }
+
             </style>
 </head>
 <body>
@@ -247,15 +265,47 @@
             <div class="theme">Louange</div>
             
             <div class="chanson">
-                <div class="titre">Je louerai Ton Nom</div>
-                <div class="artiste">Artiste Gospel A</div>
-                <div class="lyrics">"Je louerai Ton Nom Seigneur, De tout mon cœur..."</div>
-                <div class="paroles">
-                    CHANTS DE LOUANGE
-                </div>
+                <div class="titre">Agbara (Power)</div>
+                <div class="artiste">JayMikee ft Gaise Baba</div>
+                <div class="lyrics">"Agbara! T’o ju agbara lo..."</div>
                 <div class="footer">
-                    <span class="langue">FRA</span>
-                    <a href="detail.html"><button class="btn-voir-plus">Voir les paroles</button></a>
+                    <span class="langue">YOR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Imela</div>
+                <div class="artiste">Nathaniel Bassey</div>
+                <div class="lyrics">"Imela, imela\Thanks you Jesus\thanks you lord..."</div>
+                <div class="footer">
+                    <span class="langue">YOR, EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> 
+            <div class="chanson">
+                <div class="titre">You do this one</div>
+                <div class="artiste">Mercy chinwo</div>
+                <div class="lyrics">"You do this one for me..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> <div class="chanson">
+                <div class="titre">Too faithfull</div>
+                <div class="artiste">Moses bliss</div>
+                <div class="lyrics">"You are too faithfull to fail me..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div> 
+            <div class="chanson">
+                <div class="titre">El Shaddai</div>
+                <div class="artiste">Debora Lukaku</div>
+                <div class="lyrics">"El Shaddai, Dieu tout puissant..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
                 </div>
             </div>
         </div>
@@ -264,17 +314,48 @@
             <div class="theme">Adoration</div>
             
             <div class="chanson">
-                <div class="titre">Devant Ton Trône</div>
-                <div class="artiste">Artiste Gospel B</div>
-                <div class="lyrics">"Saint, Saint, Saint est Ton Nom..."</div>
-                <div class="paroles">
-                    Nous prosternons nos cœurs devant Ta majesté.<br>
-                    Que Ton Esprit descende et inonde ce lieu.<br>
-                    Reçois l'adoration de Tes enfants assemblés.
-                </div>
+                <div class="titre">Tala delivrance</div>
+                <div class="artiste">Moise Mbiye</div>
+                <div class="lyrics">"Tala delivrance, tala delivrance..."</div>
                 <div class="footer">
-                    <span class="langue">FRA</span>
-                    <button class="button-voir-plus">Voir les paroles</button>
+                    <span class="langue">LIN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Tu es Dieu</div>
+                <div class="artiste">Debora Lukaku</div>
+                <div class="lyrics">"Dieu, Tu es grand..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Way Maker</div>
+                <div class="artiste">Sinach</div>
+                <div class="lyrics">"Way moker, miracle power..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Yeho</div>
+                <div class="artiste">KS Bloom</div>
+                <div class="lyrics">"Dieu tu est roi..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Fungola</div>
+                <div class="artiste">Frank Mukuna</div>
+                <div class="lyrics">"Fungola, Fungola milimo..."</div>
+                <div class="footer">
+                    <span class="langue">LIN</span>
+                    <a href="detail.html"><button class="button-voir-plus">Voir les paroles</button></a>
                 </div>
             </div>
         </div>
@@ -283,22 +364,74 @@
             <div class="theme">Action de Grâce</div>
             
             <div class="chanson">
-                <div class="titre">Merci pour Tes Bienfaits</div>
-                <div class="artiste">Artiste Gospel C</div>
-                <div class="lyrics">"Pour la vie que Tu m'as donnée..."</div>
-                <div class="paroles">
-                    Pour Ta grâce infinie et Ton amour quotidien.<br>
-                    Quand j'étais tombé, Ta main m'a relevé.<br>
-                    Je Te dis merci, ô Éternel mon Dieu.
+                <div class="titre">Merveilleux</div>
+                <div class="artiste">Indira</div>
+                <div class="lyrics">"Tu es merveilleux..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
                 </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Je suis là</div>
+                <div class="artiste">Moise Mbiye</div>
+                <div class="lyrics">"Je suis là, Je suis là\Pour te louer seigneur..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Jesus</div>
+                <div class="artiste">Indira</div>
+                <div class="lyrics">"Jesus, Jesus\ le nom qui sauve..."</div>
+                <div class="footer">
+                    <span class="langue">FR</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Jehova</div>
+                <div class="artiste">Enita Adaba</div>
+                <div class="lyrics">"Jehova you are my mighty..."</div>
+                <div class="footer">
+                    <span class="langue">EN</span>
+                    <button class="button-voir-plus">Voir les paroles</button>
+                </div>
+            </div>
+            <div class="chanson">
+                <div class="titre">Nzambe Na Nga</div>
+                <div class="artiste">Mike Kalambay</div>
+                <div class="lyrics">"Nzambe na nga, \nYa solo eza no yo..."</div>
                 <div class="footer">
                     <span class="langue">LIN</span>
                     <button class="button-voir-plus">Voir les paroles</button>
                 </div>
             </div>
+            
         </div>
     </div>
+        <script>
+            const lyricsContainer = document.getElementById('lyrics-container');
 
+            songs.forEach((song, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="favorite" onclick="toggleFavorite(${index})">★</div>
+                    <h2>${song.title}</h2>
+                    <p>${song.lyrics}</p>
+                `;
+                lyricsContainer.appendChild(card);
+            });
 
+            function toggleFavorite(index) {
+                const favoriteIcon = document.querySelectorAll('.favorite')[index];
+                favoriteIcon.classList.toggle('fav');
+            }
+        </script>
+    <footer>
+        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
+    </footer>
 </body>
 </html>

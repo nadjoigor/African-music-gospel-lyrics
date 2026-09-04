@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titre</title>
+    <style>
+        :root{
+            --primary: #6a1b9a;
+            --accent: #ffb300;
+            --bg: #F5F5F5;
+            --text: #212121
+        }
+        
+
+:root {
+  --primary: #6A1B9A; /* Violet gospel */
+  --accent: #FFB300;  /* Or */
+  --bg: #F5F5F5;
+  --text: #212121;
+}
+.body{ margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { background: var(--bg); color: var(--text); }
+
+header {
+  background: linear-gradient(135deg, var(--primary), #8E24AA);
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+header input {
+  width: 90%;
+  max-width: 500px;
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  margin-top: 1rem;
+  font-size: 16px;
+}
+
+.song-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.song-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.song-card:hover { transform: translateY(-5px); }
+.song-card img { width: 100%; border-radius: 8px; }
+
+#lyricsPage { padding: 2rem; max-width: 800px; margin: auto; }
+.song-header { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.song-header img { width: 200px; border-radius: 12px; }
+.lyrics-box { background: white; padding: 1.5rem; border-radius: 12px; white-space: pre-wrap; }
+.lyrics-box pre { font-size: 18px; line-height: 1.8; }
+#copyBtn, #backBtn {
+  background: var(--primary); color: white; border: none; padding: 8px 16px;
+  border-radius: 8px; cursor: pointer; margin-bottom: 1rem;
+}
+.hidden { display: none; }
+
+footer { text-align: center; padding: 2rem; color: #777; }
+
+@media(max-width: 600px){
+  .song-header { flex-direction: column; align-items: center; text-align: center; }}
+
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <h2>Top du moment</h2>
+            <div id="songList" class="song-card">
+                <!--Les chansons vont s'afficher ici-->
+            </div>
+            <div>
+                <h2 id="songTitle"></h2>
+                <p id="songArtist"></p>
+                <iframe id="youtubePlayer" width="100%" height="200" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="lyrics-box">
+                <h3>Paroles</h3>
+                <button id="copyBtn">Copier</button>
+                <pre id="songLyrics"></pre>
+            </div>
+        </section>
+    </main>
+    <script>
+
+        const songs = [
+        // NIGERIA
+        {id: 1, title: "Imela", artist: "Nathaniel Bassey", country: "Nigeria", cover: "https://i.ytimg.com/vi/4oU1m8G2k4Y/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/4oU1m8G2k4Y", lyrics: "Imela, imela, imela\nThank you Jesus\nImela, imela, imela\nThank you Lord..."},
+        {id: 2, title: "Way Maker", artist: "Sinach", country: "Nigeria", cover: "https://i.ytimg.com/vi/7T6Xo9eRqQ8/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/7T6Xo9eRqQ8", lyrics: "Way maker, miracle worker\nPromise keeper, light in the darkness\nMy God, that is who you are..."},
+        {id: 3, title: "Olowogbogboro", artist: "Nathaniel Bassey", country: "Nigeria", cover: "https://i.ytimg.com/vi/xyz123/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/xyz123", lyrics: "Olowogbogboro, olohun tobi o\nOlorun agbara, olohun mimo..."},
+        {id: 4, title: "Excess Love", artist: "Mercy Chinwo", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc1/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc1", lyrics: "Jesus, Jesus, Jesus\nYour love is so amazing..."},
+        {id: 5, title: "You Do This One", artist: "Mercy Chinwo", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc2/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc2", lyrics: "You do this one for me\nYou do am again..."},
+        {id: 6, title: "Onosibezi", artist: "Moses Bliss", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc3/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc3", lyrics: "Onosibezi, Onosibezi\nGod that does not fail..."},
+        {id: 7, title: "Too Faithful", artist: "Moses Bliss", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc4/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc4", lyrics: "You are too faithful to fail me\nToo faithful to forsake me..."},
+        {id: 8, title: "Defender", artist: "Dunsin Oyekan", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc5/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc5", lyrics: "Defender, you dey for me\nYou dey for me..."},
+        {id: 9, title: "Fragrance To Fire", artist: "Dunsin Oyekan", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc6/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc6", lyrics: "Take my life as a fragrance\nTo fire..."},
+        {id: 10, title: "Monie", artist: "Ada Ehi", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc7/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc7", lyrics: "Monie, monie, monie\nEzi omo chineke..."},
+        
+        // GHANA
+        {id: 11, title: "Obiaa Nye Obiaa", artist: "Joe Mettle", country: "Ghana", cover: "https://i.ytimg.com/vi/abc8/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc8", lyrics: "Obiaa nye obiaa\nSe Jesus mpo a, obiaa nye obiaa..."},
+        {id: 12, title: "Yesu Mo", artist: "Joe Mettle", country: "Ghana", cover: "https://i.ytimg.com/vi/abc9/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc9", lyrics: "Yesu mo, Yesu mo\nMeda wo ase..."},
+        {id: 13, title: "God of Victory", artist: "Diana Hamilton", country: "Ghana", cover: "https://i.ytimg.com/vi/abc10/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc10", lyrics: "You are the God of victory\nYou never lose a battle..."},
+        {id: 14, title: "Adom", artist: "Diana Hamilton", country: "Ghana", cover: "https://i.ytimg.com/vi/abc11/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc11", lyrics: "Adom, adom, adom\nW’adom so..."},
+        {id: 15, title: "Bema", artist: "Kofi Owusu Dua Anto", country: "Ghana", cover: "https://i.ytimg.com/vi/abc12/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc12", lyrics: "Bema, bema, bema\nYesu bema..."},
+        
+        // CÔTE D'IVOIRE
+        {id: 16, title: "Yeho", artist: "KS Bloom", country: "Côte d'Ivoire", cover: "https://i.ytimg.com/vi/abc13/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc13", lyrics: "Yeho, yeho, yeho\nTu es Dieu, tu es Roi..."},
+        {id: 17, title: "Bonne Année", artist: "KS Bloom", country: "Côte d'Ivoire", cover: "https://i.ytimg.com/vi/abc14/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc14", lyrics: "Bonne année, bonne santé\nQue Dieu te bénisse..."},
+        {id: 18, title: "Tu Es Dieu", artist: "Debora Lukalu", country: "Côte d'Ivoire", cover: "https://i.ytimg.com/vi/abc15/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc15", lyrics: "Tu es Dieu, tu es grand\nNul n'est comme toi..."},
+        {id: 19, title: "El Shaddai", artist: "Debora Lukalu", country: "Côte d'Ivoire", cover: "https://i.ytimg.com/vi/abc16/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc16", lyrics: "El Shaddai, El Shaddai\nDieu tout puissant..."},
+        {id: 20, title: "Dieu Est Grand", artist: "Esther Diarra", country: "Côte d'Ivoire", cover: "https://i.ytimg.com/vi/abc17/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc17", lyrics: "Dieu est grand, Dieu est fort\nSa fidélité dure à toujours..."},
+
+        // RDC
+        {id: 21, title: "Nzambe Na Nga", artist: "Mike Kalambay", country: "RDC", cover: "https://i.ytimg.com/vi/abc18/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc18", lyrics: "Nzambe na nga, Nzambe na nga\nOza ya solo..."},
+        {id: 22, title: "Tala Delivrance", artist: "Moïse Mbiye", country: "RDC", cover: "https://i.ytimg.com/vi/abc19/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc19", lyrics: "Tala delivrance, tala delivrance\nYa solo eza na yo..."},
+        {id: 23, title: "Je Suis Là", artist: "Moïse Mbiye", country: "RDC", cover: "https://i.ytimg.com/vi/abc20/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc20", lyrics: "Je suis là, je suis là\nPour te louer Seigneur..."},
+        {id: 24, title: "Oselelengo", artist: "Gael", country: "RDC", cover: "https://i.ytimg.com/vi/abc21/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc21", lyrics: "Oselelengo, oselelengo\nYesu na nga..."},
+        {id: 25, title: "Fungola", artist: "Frank Mukuna", country: "RDC", cover: "https://i.ytimg.com/vi/abc22/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc22", lyrics: "Fungola, fungola milimo\nYa Nzambe..."},
+
+        // CAMEROUN
+        {id: 26, title: "Merveilleux", artist: "Indira", country: "Cameroun", cover: "https://i.ytimg.com/vi/abc23/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc23", lyrics: "Tu es merveilleux\nTes œuvres sont merveilleuses..."},
+        {id: 27, title: "Jesus", artist: "Indira", country: "Cameroun", cover: "https://i.ytimg.com/vi/abc24/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc24", lyrics: "Jesus, Jesus\nLe nom qui sauve..."},
+        {id: 28, title: "Je Crie", artist: "Dena Mwana", country: "Cameroun", cover: "https://i.ytimg.com/vi/abc25/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc25", lyrics: "Je crie à toi mon Dieu\nViens à mon secours..."},
+        
+        // AUTRES HITS INTERNATIONAUX AFRO
+        {id: 29, title: "Jehovah", artist: "Enitan Adaba", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc26/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc26", lyrics: "Jehovah, you are mighty\nYou are worthy to be praised..."},
+        {id: 30, title: "Baba", artist: "Bolanle", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc27/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc27", lyrics: "Baba, Baba\nYou are my father..."},
+        {id: 31, title: "I Worship You", artist: "Judikay", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc28/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc28", lyrics: "I worship you, I worship you\nMore than anything..."},
+        {id: 32, title: "More Than Gold", artist: "Judikay", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc29/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc29", lyrics: "You are more than gold\nMore than silver..."},
+        {id: 33, title: "King of Kings", artist: "Hillsong + Nathaniel Bassey", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc30/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc30", lyrics: "Praise the Father, praise the Son\nPraise the Spirit, three in one..."},
+        {id: 34, title: "Ohemaa", artist: "Lady Prempeh", country: "Ghana", cover: "https://i.ytimg.com/vi/abc31/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc31", lyrics: "Ohemaa, Ohemaa\nWo ho te ase..."},
+        {id: 35, title: "Aseda", artist: "Piesie Esther", country: "Ghana", cover: "https://i.ytimg.com/vi/abc32/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc32", lyrics: "Aseda, aseda\nMeda wo ase..."},
+        {id: 36, title: "C’est Ton Nom", artist: "Glorious Band", country: "Côte d'Ivoire", cover: "https://i.ytimg.com/vi/abc33/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc33", lyrics: "C’est ton nom que j’invoque\nAu nom de Jesus..."},
+        {id: 37, title: "Je Te Loue", artist: "Glorious Band", country: "Côte d'Ivoire", cover: "https://i.ytimg.com/vi/abc34/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc34", lyrics: "Je te loue, je te loue\nMon âme te loue..."},
+        {id: 38, title: "Jesus Christ", artist: "Roseline Layo", country: "Côte d'Ivoire", cover: "https://i.ytimg.com/vi/abc35/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc35", lyrics: "Jesus Christ, tu es mon appui\nMon bouclier..."},
+        {id: 39, title: "Maboko Pamba", artist: "Dena Mwana", country: "RDC", cover: "https://i.ytimg.com/vi/abc36/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc36", lyrics: "Nakoya na maboko pamba\nNa pesa yo motema..."},
+        {id: 40, title: "Elikya", artist: "Dena Mwana", country: "RDC", cover: "https://i.ytimg.com/vi/abc37/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc37", lyrics: "Elikya na nga, elikya na nga\nEza na yo nkolo..."},
+        {id: 41, title: "The Name Of Jesus", artist: "Ada", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc38/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc38", lyrics: "The name of Jesus is higher\nHigher than any other name..."},
+        {id: 42, title: "Only You Jesus", artist: "Ada", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc39/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc39", lyrics: "Only you Jesus, only you\nMy heart desires..."},
+        {id: 43, title: "Ebenezer", artist: "Tope Alabi", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc40/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc40", lyrics: "Ebenezer, Ebenezer\nOlorun to ti ran mi lowo..."},
+        {id: 44, title: "Agalliao", artist: "Tope Alabi", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc41/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc41", lyrics: "Agalliao, agalliao\nMo dupé lowo re..."},
+        {id: 45, title: "What A God", artist: "Victoria Orenze", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc42/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc42", lyrics: "What a God we serve\nWhat a mighty God..."},
+        {id: 46, title: "I See You", artist: "Victoria Orenze", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc43/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc43", lyrics: "I see you, I see you\nHigh and lifted up..."},
+        {id: 47, title: "Nara Ekele", artist: "Tim Godfrey", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc44/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc44", lyrics: "Nara ekele, nara ekele\nTake my thanksgiving..."},
+        {id: 48, title: "Big God", artist: "Tim Godfrey", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc45/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc45", lyrics: "My God is a big God\nHe is mighty to save..."},
+        {id: 49, title: "Jesus Is Alive", artist: "Sunmisola Agbebi", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc46/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc46", lyrics: "Jesus is alive\nDeath could not hold him down..."},
+        {id: 50, title: "Kadosh", artist: "Sunmisola Agbebi", country: "Nigeria", cover: "https://i.ytimg.com/vi/abc47/maxresdefault.jpg", youtube: "https://www.youtube.com/embed/abc47", lyrics: "Kadosh, kadosh, kadosh\nHoly is the Lord..."}
+        ]
+        const songList = document.getElementById('songList');
+        const searchBar = document.getElementById('searchBar');
+        const lyricsPage = document.getElementById('lyricsPage');
+        const results = document.getElementById('results');
+
+        function displaySongs(filteredSongs) {
+        songList.innerHTML = '';
+        filteredSongs.forEach(song => {
+            const card = `
+            <div class="song-card" onclick="showLyrics(${song.id})">
+                <img src="${song.cover}" alt="${song.title}">
+                <h3>${song.title}</h3>
+                <p>${song.artist} - ${song.country}</p>
+            </div>
+            `;
+            songList.innerHTML += card;
+        });
+        }
+
+        searchBar.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const filtered = songs.filter(song => 
+            song.title.toLowerCase().includes(term) || 
+            song.artist.toLowerCase().includes(term) ||
+            song.lyrics.toLowerCase().includes(term) ||
+            song.country.toLowerCase().includes(term)
+        );
+        displaySongs(filtered);
+        });
+
+        function showLyrics(id) {
+        const song = songs.find(s => s.id === id);
+        document.getElementById('songTitle').innerText = song.title;
+        document.getElementById('songArtist').innerText = song.artist;
+        document.getElementById('songCover').src = song.cover;
+        document.getElementById('songLyrics').innerText = song.lyrics;
+        document.getElementById('youtubePlayer').src = song.youtube;
+        
+        results.classList.add('hidden');
+        lyricsPage.classList.remove('hidden');
+        window.scrollTo(0,0);
+        }
+
+        document.getElementById('backBtn').addEventListener('click', () => {
+        lyricsPage.classList.add('hidden');
+        results.classList.remove('hidden');
+        document.getElementById('youtubePlayer').src = ""; // stop la vidéo
+        });
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+        const lyrics = document.getElementById('songLyrics').innerText;
+        navigator.clipboard.writeText(lyrics);
+        alert('Paroles copiées !');
+        });
+
+        displaySongs(songs);
+    </script>
+</body>
+</html>
