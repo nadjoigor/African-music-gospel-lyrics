@@ -5,12 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se connecter</title>
     <style>
-        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #e8e2e2;
+            color: #181818;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h1 {
+            font-size: 42px;
+            font-weight: bold;
+            color: purple;
+            letter-spacing: 2px;
+        }
+        header p {
+            color: purple;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        form{
+            background-color: white;
+            padding: 50px;
+            border-radius: 30px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #181818;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input{
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid  #e8e2e2;
+            font-size: 14px;
+            outline: none;
+        }
+        input:focus {
+            border-color: purple;
+            box-shadow: 0 0 8px rgba(128, 0, 128, 0.1);
+        }
+        button{
+            width: 100%;
+            color: white;
+            background-color: purple;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+            padding: 15px;
+        }
+        button:hover {
+            background-color: #800080;
+            transform: scale(1.02);
+        }
+        .button-link {
+            background: none;
+            border: none;
+            color: rgb(118, 109, 118);
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            margin-left: 5px;
+            padding: 0;
+        }
+        .button-link:hover {
+            color: black;
+            text-decoration: underline;
+        }
+        footer {
+            color: #800080;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .creer-mon-compte{
+            background-color: #800080;
+            color:black;
+            font-weight: 100;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        .conteneur{
+            margin-top: 9px;
+            padding-left: 15px;
+            display: flex;
+            flex-direction: row;
+            gap: 3px;
+        }
+        footer {
+            color: #800080;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
     </style>
 </head>
 <body>
     <!--Se connecter [caché]-->
 </body>
+    <header>
+        <h1>AGLY</h1>
+        <p><Strong>African muscic gospel lyrics</Strong></p>
+    </header>
         <form>
             <div>
                 <label for="Nom d'utilisateur">Identifiant ou Email</label>
@@ -21,12 +141,13 @@
                 <input type="Mot de passe" id="Mot de passe" placeholder="Votre mot de passe" required>
             </div><br>
             <button type="submit">Se connecter</button>
-            <p>Nouveau ici ? <button>Créer un compte</button></p>
-            <p>Mot de passe oublié ?</p>
+            <p>Nouveau ici ? <a class="creer-mon-compte" href="compte.html">Créer un compte</a></p>
         </form>
             </div><br>
-            <!--Pied de page-->
-            <footer>
-        &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
-    </footer>
+    <form>
+        <footer>
+            &copy; 2026 AMGL - African Music Gospel Lyrics. Tous droits réservés.
+        </footer>
+    </form>
+            
     </html>
