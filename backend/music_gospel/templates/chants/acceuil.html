@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +11,13 @@
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
         }
         body {
             background-color: #e8e2e2;
             color: #ffffff;
             line-height: 1.6;
-            overflow: hidden;
+            overflow: auto;
         }
         @media (max-width: 1200px) {
         body {
@@ -152,7 +154,9 @@
         </nav>
     </header>
     <div class="hero">
-        <div class="image"><img src="images/image.png" alt="photo de profil" width="400px" height="400px"></div>
+        <div class="image">
+            <img src="{% static 'images/image.png' %}" alt="photo de profil" width="400px" height="400px">
+        </div>
         <section>
             <h1>Vibrez au rythme de la musique</h1>
             <p>Découvrez, écoutez et partagez vos chansons gospels préférées en illimité.</p>
