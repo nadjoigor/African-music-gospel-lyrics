@@ -5,11 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Titres</title>
     <style>
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .lyrics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 15px;
+            flex: 1 1 calc(30% - 20px); /* Trois cartes par ligne */
+            position: relative;
+        }
+
+        .favorite {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .search-container { 
+            max-width: 600px; 
+            margin: 0 auto;
+            display: flex; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            border-radius: 10px; overflow: hidden;
+            padding: 10px; 
+        }
+        input { 
+            flex: 1; 
+            padding: 15px 25px; 
+            border: none; 
+            border-radius: 5px ;
+            font-size: 16px; 
+            outline: none; 
+            display: flex;
+            justify-content: space-between;
+        }
+        #searchButton { 
+            padding: 15px 30px; 
+            border: none;
+            border-radius: 8px; 
+            background-color: #319795; 
+            color: white; 
+            font-size: 16px; 
+            cursor: pointer; transition: 0.2s; 
+        }
+        #searchButton:hover { 
+            background-color: #2c7a7b; 
+        }
+        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: Arial, sans-serif;
+        }
+         @media (max-width: 1200px) {
+        body {
+            overflow: auto; 
+        }
         }
         body {
             background-color: #e8e2e2;
@@ -80,12 +144,8 @@
             transform: scaleX(1);
             transform-origin: bottom left;
         }
-        .recherche {
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 0 20px;
-            text-align: center;
-        }
+        
+
     </style>
 </head>
 <body>
@@ -101,8 +161,37 @@
             <a href="a propos.html">A propros</a>
             <a href="profil.html">Profil</a>
         </nav>
+        
     </header>
-    <div class="recherche">
-        <input type="text" class="Barre de recherche" placeholder="Rechercher un lyric">
+    <div class="search-container">
+    <input type="text" id="search-container" placeholder="Rechercher un titre, artiste, parole..."><button id="searchButton">Rechercher</button></div>
+        <h1>Lyrics</h1>
+        <div id="conteneurlyrics" ></div>
+        <script>
+            const songs = [
+                { title: "Chanson 1", lyrics: "Alléluiya" },
+                { title: "Chanson 2", lyrics: "Voici les paroles de la chanson 2..." },
+                { title: "Chanson 3", lyrics: "Voici les paroles de la chanson 3..." }
+            ];
+
+            const lyricsContainer = document.getElementById('lyrics-container');
+
+            songs.forEach((song, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="favorite" onclick="toggleFavorite(${index})">★</div>
+                    <h2>${song.title}</h2>
+                    <p>${song.lyrics}</p>
+                `;
+                lyricsContainer.appendChild(card);
+            });
+
+            function toggleFavorite(index) {
+                const favoriteIcon = document.querySelectorAll('.favorite')[index];
+                favoriteIcon.classList.toggle('fav');
+            }
+        </script>
+
 </body>
 </html>
