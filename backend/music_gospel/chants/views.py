@@ -5,8 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import Q 
 from .models import Chant
-from .forms import InscriptionForms,ConnexionForms
+from .forms import InscriptionForms,ConnexionForms,Modification1Forms,Modification2Forms
 from .models import Profil 
+from django.contrib import messages 
 
 # Create your views here.
 def acceuil(request):
@@ -88,8 +89,22 @@ def detail(request,id):
 
 def modification(request):
     if request.method=='POST':
-        form = InscriptionForms(request.POST,instance=request.user)
-        
+        form1 = Modification1Forms(request.POST,instance=request.user)
+        utilisateur = Profil.objects.get(request.user)
+        form2 = Modification2Forms(request,instance=utilisateur)
+        if form1.is_valid() and form2.is_valid():
+            form1.save()
+            form2.save()
+            messages.success(request,"Vos modifications ont été effectuées avec succès ")
+        else:
+            messages.error(request,"Le formulaire n'est pas valide")
+    else:
+        form1 = Modification1Forms(request.POST,instance=request.user)
+        utilisateur = Profil.objects.get(request.user)
+        form2 = Modification2Forms(request,instance=utilisateur)
+    return render(request,'chants/modification.html',{'form1':form1,'form2':form2})
+
+
 
 def deconnexion(request):
     logout(request)

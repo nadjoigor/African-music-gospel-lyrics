@@ -9,5 +9,6 @@ urlpatterns = [
     path('lyrics/',views.lyrics,name='lyrics'),
     path('detail/<int:id>/',views.detail,name='detail'),
     path('connexion/',views.connexion,name='connexion'),
-    path('deconnexion/',views.deconnexion,name='deconnexion')
+    path('deconnexion/',views.deconnexion,name='deconnexion'),
+    path('modification/',views.modification,name='modification')
 ]

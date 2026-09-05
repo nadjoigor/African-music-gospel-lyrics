@@ -249,10 +249,11 @@
         </div>
 
         <nav>
-            <a href="acceuil.html">Acceuil</a>
-            <a href="lyrics.html">Lyrics</a>
-            <a href="a propos.html">A propros</a>
-            <a href="profil.html">Profil</a>
+            <a href="{% url 'acceuil' %}">Acceuil</a>
+            <a href="{% url 'connexion' %}">Se connecter</a>
+            <a href="{% url 'apropos' %}">A propros</a>
+            <a href="{% url 'lyrics' %}">Voir les lyrics</a>
+            <a href="{% url 'profil' %}">Profil</a>
         </nav>
     </header>
     <div class="search-container">

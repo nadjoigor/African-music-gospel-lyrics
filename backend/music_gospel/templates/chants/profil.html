@@ -218,19 +218,14 @@
                 <h3>Nom: </h3><p> {{utilisateur.last_name}} </p>
                 <h3>Email:</h3><p>{{utilisateur.email}}</p>
                 <div class="bouton">
-                    <button class="bouton1" >Modifier</button>
+                   <a href= {% url "modification" %} > <button class="bouton1" >Modifier</button> </a>
                     <a href= {% url "deconnexion" %} ><button class="bouton1" >Se deconnecter</button></a>
                 </div>
             </div>
     </div>
     <div class="Info2">
-        <h2>Mes Favoris</h2>
-        <ul id="favorites-list">
-            <li>Lyric 1</li>
-            <li>Lyric 2</li>
-            <li>Lyric 3</li>
-        </ul>
-        <button class="bouton1" onclick="clearFavorites()">Vider les favoris</button>
+        
+       
     </div>
 </div>
     <script>
