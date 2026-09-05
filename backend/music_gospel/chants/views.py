@@ -90,7 +90,7 @@ def detail(request,id):
 def modification(request):
     if request.method=='POST':
         form1 = Modification1Forms(request.POST,instance=request.user)
-        utilisateur = Profil.objects.get(request.user)
+        utilisateur = Profil.objects.get(user=request.user)
         form2 = Modification2Forms(request,instance=utilisateur)
         if form1.is_valid() and form2.is_valid():
             form1.save()
