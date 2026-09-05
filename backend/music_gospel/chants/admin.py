@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Chant
+from .models import Chant,Profil
 
 # Register your models here.
 @admin.register(Chant)
@@ -20,6 +20,6 @@ class ChantAdmin(admin.ModelAdmin):
             'classes': ('wide',) # Pour avoir un grand champ texte
         }),
     )
-
+admin.site.register(Profil)
 
 

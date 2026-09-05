@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -193,7 +194,8 @@
                 <nav>
                     <a href={% url "acceuil" %}>Acceuil</a>
                     {% comment %} <a href={% url "lyrics" %}>Lyrics</a> {% endcomment %}
-                    <a href="a propos.html">A propros</a>
+                    <a href={% url "apropos" %}>A propros</a>
+                    <a href={% url "deconnexion" %}>Deconnexion</a>
                 </nav>
     </header>
     <div>
@@ -201,7 +203,12 @@
         <h1>Mon Profil</h1>
         <div class="profilInfo">
             <div class="profil">
+                {% if profil.profil_image %}
                 <img src="images\profil.png" alt="Photo de profil" class="profilphoto" id="preview">
+                {% else %}
+                <img src= {% static "images/profil.png" %} alt="Photo de profil" class="profilphoto" id="preview">
+                {% endif %}
+
                 <br>
                 <label for="fileInput" class="choix">Choisir une photo</label>
                 <input type="file" id="fileInput" accept="image/*">

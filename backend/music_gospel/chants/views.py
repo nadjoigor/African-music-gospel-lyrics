@@ -6,12 +6,12 @@ from django.contrib.auth.models import User
 from django.db.models import Q 
 from .models import Chant
 from .forms import InscriptionForms,ConnexionForms
+from .models import Profil 
 
 # Create your views here.
 def acceuil(request):
-    chants = Chant.objects.all() 
     
-    return render(request, 'chants/acceuil.html', {'chants': chants})
+    return render(request, 'chants/acceuil.html')
 def inscription(request:HttpRequest):
     message = ''
     if request.method == 'POST':
@@ -27,8 +27,11 @@ def inscription(request:HttpRequest):
                 utilisateur = User.objects.create_user(
                 username=form.cleaned_data['username'],
                 email=form.cleaned_data['email'],
-                password=form.cleaned_data['password']
+                password=form.cleaned_data['password'],
+                first_name=form.cleaned_data['first_name'],
+                last_name=form.cleaned_data['last_name'],
             )
+                Profil.objects.create(user=utilisateur)
                 login(request,utilisateur)
                 return redirect('profil',)
         else:
@@ -46,7 +49,8 @@ def apropos(request):
 @login_required(login_url='connexion')
 def profil(request:HttpRequest):
     utilisateur = request.user
-    return render(request,'chants/profil.html',{'utilisateur':utilisateur})
+    profil = Profil.objects.get(user=utilisateur)
+    return render(request,'chants/profil.html',{'utilisateur':utilisateur,'profil':profil})
 
 def connexion(request):
     message = ''
@@ -73,7 +77,19 @@ def connexion(request):
     return render(request,'chants/connexion.html',{'form':form,'message':message})
 
 def lyrics(request):
-    return render(request,'chants/lyrics.html')
+    louange = Chant.objects.filter(theme='LOUANGE')
+    adoration = Chant.objects.filter(theme='ADORATION')
+    grace = Chant.objects.filter(theme='GRACE')
+    return render(request,'chants/lyrics.html',{'louange':louange,'adoration':adoration,'grace':grace})
+
+def detail(request,id):
+    chant = Chant.objects.get(id=id)
+    return render(request,'chants/detail.html',{'chant':chant})
+
+def modification(request):
+    if request.method=='POST':
+        form = InscriptionForms(request.POST,instance=request.user)
+        
 
 def deconnexion(request):
     logout(request)
